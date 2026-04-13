@@ -1,0 +1,8 @@
+The overall conversion rate is approximately 3.4%, indicating that only a small proportion of users complete a purchase despite high browsing activity.
+There is a  significant drop-off across the funnel, particularly between the cart and purchase stages (15.2% conversion), suggesting friction points in the checkout process.
+Only 24% of users who view products add them to cart, highlighting a gap in engagement or purchase intent.
+User behavior shows signs of hesitation, with a notable number of users removing items from their cart before completing a purchase.
+Revenue analysis shows a total of 8,361.85, with the highest revenue recorded in October (2,425.44), followed by a decline in subsequent months, suggesting potential seasonality or decreasing user engagement.
+A small number of brands, such as Irisk and Runail, dominate purchases, indicating strong brand-driven customer preferences.
+Purchases are distributed across multiple products, suggesting the absence of a single dominant best-seller and a diverse demand across the product catalog.
+Some product categories contribute minimally to total revenue, indicating potential opportunities for optimization or product portfolio adjustment.
