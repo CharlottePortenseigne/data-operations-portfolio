@@ -1,14 +1,30 @@
-# E-commerce SQL Analysis
+# E-commerce Funnel & Customer Behavior Analysis (SQL)
 
 ## Objective
-Analyze customer behavior in a sampled e-commerce dataset using SQL.
-
-## Dataset
-Sample dataset built from 5 months of e-commerce data, with 5,000 rows selected per month (approximately 25,000 rows total).
+Analyze customer behavior across an e-commerce dataset to understand the conversion funnel and identify drop-off points using SQL.
 
 ## Tools
 - SQL
-- SQLite
+- SQLite Online
+- CSV dataset
+- 
+## Dataset
+Sample dataset built from 5 months of e-commerce data, with 5,000 rows selected per month (approximately 25,000 rows total). Sample of e-commerce events data including:
+- event_time
+- event_type
+- product_id
+- category_code
+- brand
+- price
+- user_id
+- user_session
+
+## Key Questions
+- How many users view, cart, and purchase?
+- What is the overall conversion rate?
+- Where do users drop off in the purchase journey?
+- Which categories generate the most revenue?
+- Which products are purchased most often?
 
 ## Analysis Performed
 - Count of event types
@@ -18,14 +34,18 @@ Sample dataset built from 5 months of e-commerce data, with 5,000 rows selected 
 - Top purchased categories
 
 ## Key Results
-- Conversion rate: 3.4%
+- Conversion rate: ~3.4%
 - Total revenue: 218,830.66
+- Significant drop-off between views and purchases
+- High cart removal activy suggests user hesitation
 
-## Insights
-- Product views are much higher than purchases
-- There is a significant drop-off in the conversion funnel
-- The sample dataset is sufficient to identify customer behavior trends
+## Key Insights
+- The overall conversion rate is low despite high user activity.
+- A large number of users browse products without completing purchases.
+- Product demand is distibuted across multiple products rather than dominated by a single bestseller.
+- Some categories generate a disproportionate share of revenue. 
 
 ## Files
+-'ecommerce_sample.csv' :  ecommerce dataset
 - `queries.sql`: SQL queries used for the analysis
-- `results.md`: summary of results and insights
+- `insights.txt`: summary of results and insights
