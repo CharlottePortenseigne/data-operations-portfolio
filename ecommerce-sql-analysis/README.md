@@ -1,5 +1,3 @@
-:::writing{variant="standard" 
-id="19384"}
 # E-commerce Funnel & User Behavior Analysis (SQL)
 
 ## Objective
@@ -8,7 +6,7 @@ Analyze user behavior across an e-commerce dataset to understand the conversion 
 ## Tools
 - SQL (SQLite Online)
 - CSV dataset
-- 
+
 ## Dataset
 Sample of e-commerce event data including:
 - event_time
@@ -31,16 +29,16 @@ Sample of e-commerce event data including:
 - Conversion rate: ~3.4%
 - Total revenue: 8,361.89
 
-  ## Funnel Performance
-  - Users viewd products: 3,946
-  - Users added to cart: 948 (24% conversion from view)
-  - Users completed purchase: 144 (15.2% conversion from cart)
+### Funnel Performance
+- Users viewd products: 3,946
+- Users added to cart: 948 (24% conversion from view)
+- Users completed purchase: 144 (15.2% conversion from cart)
 
-  ## Revenue by Month
-  - 2019-10: 2,425.44
-  - 2019-11: 1,795.85
-  - 2020-01: 1,093.84
-  - 2020-02: 1,264.07
+### Revenue by Month
+- 2019-10: 2,425.44
+- 2019-11: 1,795.85
+- 2020-01: 1,093.84
+- 2020-02: 1,264.07
 
 ## Key Frindings
 - The overall conversion rate is low, with only a small proportion of users completing a purchase.
@@ -59,4 +57,3 @@ Sample of e-commerce event data including:
 
 ## Conclusion
 This analysis highlights key inefficiencies in the e-commerce funnel, including low conversion rates and significant drop-offs. The results suggest opportunities to improve user experience, optimize product offering, and increase revenue through better funnel performance.
-:::
