@@ -1,0 +1,8 @@
+Customer analysis shows that purchasing behavior is highly concentrated among a small number of users.
+Out of 144 purchasing users, 125 belong to the low-value segment, representing the majority of customers but contributing a smaller share of total revenue.
+Only 18 users fall into the medium-value segment, while a single user qualifies as high-value, indicating that top customers are extremely rare.
+Despite representing the majority of users, the low-value segment contributes the largest share of revenue (5,250.53), showing that volume compensates for low individual spending.
+The medium-value segment contributes 2,739.52 in revenue, representing a smaller but still significant portion of total sales.
+The high-value segment contributes 371.84, highlighting that even top customers do not dominate overall revenue in this dataset.
+The average purchase value is 4.55, indicating relatively low transaction amounts and suggesting that users tend to make small purchases.
+Overall, customer spending is distributed across many low-value users rather than driven by a small group of high-value customers.
