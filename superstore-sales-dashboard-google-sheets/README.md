@@ -1,15 +1,19 @@
-# Superstore Sales Dashboard (Google Sheets)
+# Superstore Sales Dashboard
 
 ## Overview
-This project is a complete retail data analysis built using Google Sheets, including data cleaning, KPI tracking, and dashboard creation.
+This project is an end-to-end retail data analysis built using Google Sheets. It includes data cleaning, transformation, and dashboard creation to analyze sales performance and business metrics.
+
+## Tools
+* Google Sheets
+* GitHub
 
 ## Dataset
 [View Google Sheets](https://docs.google.com/spreadsheets/d/1YhOCNmXWOkUpdLNnbfJdccVdRp_H8l0t3xKxZvTdnXw/edit?usp=sharing)
 
-## Structure
-* Raw Data
-* Clean Data
-* Dashboard
+## Project Structure
+* **Raw Data**: original dataset
+* **Clean Data**: cleaned and structured dataset
+* **Dashboard**: final analysis and visualizations
 
 ## Key Metrics
 * Total Sales: $2.29M
@@ -18,16 +22,17 @@ This project is a complete retail data analysis built using Google Sheets, inclu
 * Total Orders: 5009
 * Average Order Value: $458.61
 
-## Insights
-* Some states generate high sales but low or negative profit
-* Technology has the highest profit margin
-* Revenue is well distributed across customers
-* Regional performance varies
+## Analysis
+* Sales trends over time
+* Profit vs Sales comparison
+* Performance by category and region
+* Customer distribution analysis
 
-## Tools Used
-* Google Sheets
-* Data Analysis
-* Data Visualization
+## Insights
+* Some regions generate high sales but low or negative profit
+* Technology category shows the highest profitability
+* Revenue is relatively evenly distributed across customers
+* Regional performance differences highlight optimization opportunities
 
 ## Screenshots
 ![Dashboard](screenshot1.png)
