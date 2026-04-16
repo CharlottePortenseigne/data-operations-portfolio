@@ -1,74 +1,63 @@
-# Superstore Sales Dashboard
-
-## Overview
-This project is an end-to-end retail data analysis built using Google Sheets. It includes data cleaning, transformation, and dashboard creation to analyze sales performance and business metrics.
-
-## Tools
-* Google Sheets
-* GitHub
-
-## Dataset
-[View Google Sheets](https://docs.google.com/spreadsheets/d/1YhOCNmXWOkUpdLNnbfJdccVdRp_H8l0t3xKxZvTdnXw/edit?usp=sharing)
-
-## Project Structure
-* **Raw Data**: original dataset
-* **Clean Data**: cleaned and structured dataset
-* **Dashboard**: final analysis and visualizations
-
-## Key Metrics
-* Total Sales: $2.29M
-* Total Profit: $286K
-* Profit Margin: 12.47%
-* Total Orders: 5009
-* Average Order Value: $458.61
-
-## Analysis
-* Sales trends over time
-* Profit vs Sales comparison
-* Performance by category and region
-* Customer distribution analysis
-
-## Insights
-* Some regions generate high sales but low or negative profit
-* Technology category shows the highest profitability
-* Revenue is relatively evenly distributed across customers
-* Regional performance differences highlight optimization opportunities
-
-## Screenshots
-![Dashboard](screenshot1.png)
-
 # 📊 Sales, Marketing & Revenue Performance Analysis (Google Sheets)
 
 ## 📌 Business Context
 This project analyzes e-commerce sales and profitability data to better understand how revenue is generated, how marketing and sales efforts translate into performance, and where opportunities exist to improve both growth and efficiency.
 
-The objective is to connect data insights with real-world marketing, sales, and customer experience dynamics.
+The objective is to connect data insights with real-world **marketing, sales, and customer experience dynamics**.
 
 ---
 
 ## 📊 Data Overview
-The dataset includes:
+The dataset spans **5 months**, with approximately **5,000 records per month** (~25,000 total rows).
+
+ It includes:
 - Sales and profit data  
-- Product categories: Technology, Office Supplies, Furniture  
-- Customer segments: Consumer, Corporate, Home Office  
+- Product categories: **Technology, Office Supplies, Furniture**  
+- Customer segments: **Consumer, Corporate, Home Office**  
 - Geographic performance (Region and State)  
-- 5,009 customer orders  
+- Order-level data
+
+ This structure allows both **cross-sectional analysis** and **time-based analysis**.
 
 ---
 
-## 🧹 Data Preparation
-- Checked for missing and inconsistent values  
-- Standardized data formats  
-- Ensured consistency between sales and profit calculations  
+## 🧹 Data Preparation & Feature Engineering
+
+### Data Cleaning
+- Standardized data formats
+- Cleaned customers names
+- Standardized products categories and sub-categories
+
+---
+
+### Feature Engineering
+Additional variables were created to support deeper analysis:
+- Month / Year
+- Customer_Lifetime_Value (CLV)
+- Customer_Segment
+- **Profit_Ratio**
+- Order_Size
+- Profit_Status
+
+The features enable more **business-oriented and behavior-driven insights**.
+
+---
+
+### Data Validation
+-**Error_Check** column to flag:
+  - Sales <= 0
+  - Missing customer names
+
+This ensures **data reliability** and highlights potential data quality issues.
 
 ---
 
 ## 📈 Key Metrics
-- Total Sales: $2,297,200.86  
-- Total Profit: $286,397.02  
-- Profit Margin: 12.47%  
-- Total Orders: 5,009  
-- Average Order Value (AOV): $458.61  
+- **Total Sales**: $2,297,200.86  
+- **Total Profit**: $286,397.02  
+- **Profit Margin**: 12.47%  
+- **Total Orders**: 5,009  
+- **Average Order Value (AOV)**: $458.61  
 
 ---
 
