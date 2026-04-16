@@ -184,14 +184,24 @@ Customer experience also plays a key role. Even without immediate conversion, a 
 
 ---
 
-## 🧠 Personal Approach
+## 🧠 Personal Approach (Data, Marketing &Customer Understanding)
 
-My approach combines:
-- data analysis  
-- linguistic awareness (how messaging influences behavior)  
-- an AI-driven mindset (testing and refining hypotheses)  
+My approach combines dataanalysis, marketing thinking, and real-world customer experience.
 
-Combined with hands-on CRM experience, this allows me to connect data insights with real-world marketing and customer interactions.
+From a data perspective, I focus on identifying patterns, questioning assumptions, and connecting metrics to business outcomes.
+
+From a marketing perspective, I consider how performance is influence by:
+- Campaign targeting
+- channel and media choices
+- product positioning
+- and the alignment between customer needs and what is offered
+
+My background in linguistics also shapes how I approach problems, particularly in understanding how messaging, structure, and clarity influence customer perception and decision-making.
+
+Additionalyy, I apply an AI-driven mindset, approaching analysis as an iteractive process: exploring data, forming hypotheses, testing ideas, and refining conclusions.
+
+Combined with hands-on experience in CRM and customer interactions, this allows me to bridge the gab between data insights and how marketing, sales, and customer experience actually operate in practice.
+
 
 ---
 
@@ -203,9 +213,10 @@ Improving pricing, targeting, and customer strategy could significantly increase
 ## 🧰 Tools Used
 - Google Sheets  
 - Data visualization (dashboard & charts)  
-- Data analysis  
-
-## 🧰 Tools Used
-- Google Sheets  
-- Data visualization (dashboard & charts)  
 - Data analysis
+
+---
+
+## Project Access
+- G
+- https://docs.google.com/spreadsheets/d/1gzA6Ku7CxS1w-KYSprdfvAq9RMvU_k_YoeLQr71aItg/edit?usp=sharing
