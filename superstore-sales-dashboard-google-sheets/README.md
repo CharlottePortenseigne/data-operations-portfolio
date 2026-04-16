@@ -220,4 +220,4 @@ Improving pricing, targeting, and customer strategy could significantly increase
 ## 🔗 Project Access
 
 - 📊 **Google Sheets Dashboard:** [https://docs.google.com/spreadsheets/d/1gzA6Ku7CxS1w-KYSprdfvAq9RMvU_k_YoeLQr71aItg/edit?usp=sharing]
-- 💻 **GitHub Repository:** [LIEN]
+- 💻 **GitHub Repository:** [(https://github.com/CharlottePortenseigne/data-operations-portfolio.git)]
