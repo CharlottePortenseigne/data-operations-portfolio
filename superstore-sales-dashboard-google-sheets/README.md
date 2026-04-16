@@ -28,8 +28,6 @@ The dataset spans **5 months**, with approximately **5,000 records per month** (
 - Cleaned customers names
 - Standardized products categories and sub-categories
 
----
-
 ### Feature Engineering
 Additional variables were created to support deeper analysis:
 - Month / Year
@@ -41,8 +39,6 @@ Additional variables were created to support deeper analysis:
 
 The features enable more **business-oriented and behavior-driven insights**.
 
----
-
 ### Data Validation
 -**Error_Check** column to flag:
   - Sales <= 0
@@ -50,12 +46,10 @@ The features enable more **business-oriented and behavior-driven insights**.
 
 This ensures **data reliability** and highlights potential data quality issues.
 
----
-
 ## 📈 Key Metrics
 - **Total Sales**: $2,297,200.86  
 - **Total Profit**: $286,397.02  
-- **Profit Margin**: 12.47%  
+- **Profit Margin**: 12.03%  
 - **Total Orders**: 5,009  
 - **Average Order Value (AOV)**: $458.61  
 
