@@ -87,7 +87,7 @@ FROM ecommerce;
 
 
 -- ============================================
--- 7. Cart -> purchase conversion
+-- 7. Cart -> Purchase conversion
 -- ============================================
 
 SELECT 
@@ -157,7 +157,22 @@ ORDER BY month;
 
 
 -- ============================================
--- 12. Top products by purchases
+-- 12. Purchases by month
+-- Useful for comparing purchase volume and revenue
+-- ============================================
+
+SELECT 
+    SUBSTR(event_time, 1, 7) AS month,
+    COUNT(*) AS purchase_events,
+    ROUND(SUM(CAST(price AS REAL)), 2) AS revenue
+FROM ecommerce
+WHERE event_type = 'purchase'
+GROUP BY month
+ORDER BY month;
+
+
+-- ============================================
+-- 13. Top products by purchases
 -- ============================================
 
 SELECT 
@@ -172,7 +187,7 @@ LIMIT 10;
 
 
 -- ============================================
--- 13. Top brands by purchases
+-- 14. Top brands by purchases
 -- ============================================
 
 SELECT 
@@ -189,7 +204,24 @@ LIMIT 10;
 
 
 -- ============================================
--- 14. Top categories by revenue
+-- 15. Revenue by brand
+-- Useful to distinguish purchase volume vs value
+-- ============================================
+
+SELECT 
+    brand,
+    ROUND(SUM(CAST(price AS REAL)), 2) AS revenue,
+    COUNT(*) AS purchase_events
+FROM ecommerce
+WHERE event_type = 'purchase'
+  AND brand IS NOT NULL
+  AND brand <> ''
+GROUP BY brand
+ORDER BY revenue DESC
+LIMIT 10;
+
+-- ============================================
+-- 16. Top categories by revenue
 -- ============================================
 
 SELECT 
@@ -205,7 +237,7 @@ LIMIT 10;
 
 
 -- ============================================
--- 15. Remove-from-cart behavior
+-- 17. Remove-from-cart behavior
 -- ============================================
 
 SELECT 
@@ -215,7 +247,7 @@ WHERE event_type = 'remove_from_cart';
 
 
 -- ============================================
--- 16. Users who removed items from cart
+-- 18. Users who removed items from cart
 -- ============================================
 
 SELECT 
@@ -225,7 +257,63 @@ WHERE event_type = 'remove_from_cart';
 
 
 -- ============================================
--- 17. Session behavior preview
+-- 19. Remove-from-cart rate among cart users
+-- Better measure of hesitation after cart intent
+-- ============================================
+
+SELECT 
+    COUNT(DISTINCT CASE WHEN event_type = 'cart' THEN user_id END) AS users_carted,
+    COUNT(DISTINCT CASE WHEN event_type = 'remove_from_cart' THEN user_id END) AS users_removed_from_cart,
+    ROUND(
+        COUNT(DISTINCT CASE WHEN event_type = 'remove_from_cart' THEN user_id END) * 1.0
+        / COUNT(DISTINCT CASE WHEN event_type = 'cart' THEN user_id END),
+        4
+    ) AS remove_from_cart_user_rate
+FROM ecommerce;
+
+
+-- ============================================
+-- 20. Users who carted but never purchased
+-- Strong CRM / abandonment signal
+-- ============================================
+
+SELECT
+    COUNT(*) AS cart_no_purchase_users
+FROM (
+    SELECT
+        user_id,
+        MAX(CASE WHEN event_type = 'cart' THEN 1 ELSE 0 END) AS added_to_cart,
+        MAX(CASE WHEN event_type = 'purchase' THEN 1 ELSE 0 END) AS purchased
+    FROM ecommerce
+    GROUP BY user_id
+)
+WHERE added_to_cart = 1
+    AND purchased = 0 ;
+
+-- ============================================
+-- 21. One-time vs repeat purchasers
+-- Adds a retention / CRM angle
+-- ============================================
+
+SELECT
+    CASE
+        WHEN purchase_count = 1 THEN 'One-time purchaser'
+        ELSE 'Repeat purchaser'
+    END AS customer_type,
+    COUNT(*) AS users
+FROM (
+    SELECT
+        user_id,
+    COUNT(*) AS purchase_count
+    FROM ecommerce
+    WHERE event_type = 'purchase'
+    GROUP BY user_id
+)
+GROUP BY customer_type;
+    
+
+-- ============================================
+-- 22. Session behavior preview
 -- Events per session + purchase flag
 -- ============================================
 
@@ -239,7 +327,7 @@ LIMIT 20;
 
 
 -- ============================================
--- 18. Session behavior aggregated
+-- 23. Session behavior aggregated
 -- Conversion by number of interactions
 -- ============================================
 
@@ -261,7 +349,7 @@ ORDER BY events_count;
 
 
 -- ============================================
--- 19. Interaction buckets
+-- 24. Interaction buckets
 -- Cleaner version for README / insights storytelling
 -- ============================================
 
@@ -294,7 +382,26 @@ ORDER BY
 
 
 -- ============================================
--- 20. Optional context: unique users vs sessions
+-- 25. Average events in purchasing vs non-purchasing sessions
+-- Supports the idea than more interactions can signal stronger intent
+-- ============================================
+
+SELECT
+    purchased,
+    ROUND(AVG(events_count), 2) AS avg_events_per_session
+FROM (
+    SELECT
+        user_session,
+        COUNT(*) AS events_count,
+        MAX(CASE WHEN event_type = 'purchase' THEN 1 ELSE 0 END) AS purchased
+    FROM ecommerce
+    GROUP BY user_session
+)
+GROUP BY purchased;
+
+
+-- ============================================
+-- 26. Optional context: unique users vs sessions
 -- ============================================
 
 SELECT
