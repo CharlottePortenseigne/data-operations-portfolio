@@ -735,7 +735,154 @@ This project demonstrates how data analysis, marketing strategy, CRM thinking, a
 👉 pitch entretien (2 minutes)
 👉 ou comment le mettre sur ton CV
 
-👉 C’est ça qui transforme ton projet en job 🚀
+👉 C’est ça qui transforme ton projet en job 
+
+
+
+
+
+
+
+
+# 📊 E-commerce SQL Analysis: Funnel, Behavior & Conversion
+
+## 🎯 Project Overview
+
+This project analyzes user behavior in an e-commerce dataset to understand how users move through the purchase journey and what drives (or limits) conversion.
+
+The analysis combines:
+- SQL-based data analysis  
+- Marketing and e-commerce reasoning  
+- CRM and user journey thinking  
+- Linguistic structuring of product data  
+
+👉 The objective is to identify conversion bottlenecks and generate actionable business insights.
+
+---
+
+## 🗂️ Dataset
+
+The dataset used in this project is stored in `ecommerce_sample.csv`.
+
+> The data comes from Kaggle and represents anonymized e-commerce user interaction events.
+
+It includes:
+- `event_time`
+- `event_type` (view, cart, purchase)
+- `product_id`
+- `category_code`
+- `brand`
+- `price`
+- `user_id`
+- `user_session`
+
+> While not production data, it provides a realistic environment to simulate user behavior analysis and business decision-making.
+
+---
+
+## 📁 Repository Structure
+
+- `ecommerce_sample.csv` — dataset  
+- `queries.sql` — SQL analysis  
+- `insights.txt` — detailed strategic insights  
+- `README.md` — project documentation  
+
+---
+
+## 📊 Dashboard Overview
+
+![Dashboard](images/dashboard.png)
+
+The dashboard follows the user journey:
+1. Funnel performance  
+2. Conversion by price  
+3. Time-based trends  
+4. Brand performance  
+
+---
+
+## 🧭 Funnel Analysis
+
+- View → Cart: ~20%  
+- Cart → Purchase: ~13%  
+
+👉 Major drop-offs:
+- Product engagement (~80%)  
+- Checkout (~87%)
+
+> Conversion is a multi-step process requiring engagement and trust.
+
+---
+
+## 💰 Price Analysis
+
+- Low: ~2.5%  
+- Mid: ~1.9%  
+- High: ~2.3%  
+
+> Mid-priced products underperform, suggesting unclear positioning.
+
+---
+
+## ⏱️ Time Analysis
+
+![Time Analysis](images/time_analysis.png)
+
+> Traffic increases while purchases decrease.
+
+👉 Indicates misalignment between acquisition and conversion.
+
+---
+
+## 🏷️ Brand Analysis
+
+> Some brands convert significantly better than others.
+
+👉 Conversion depends on trust, positioning, and perceived value.
+
+---
+
+## 👤 User Behavior
+
+> More interactions → higher conversion.
+
+- 1 interaction → no conversion  
+- 3–4 interactions → peak  
+
+👉 Users need multiple touchpoints before purchasing.
+
+---
+
+## 🔍 Linguistic & Category Analysis
+
+> Product structure and naming influence user behavior.
+
+👉 Clear labeling improves:
+- understanding  
+- navigation  
+- conversion  
+
+---
+
+## 📄 Additional Insights
+
+More detailed analysis and strategic interpretations are available in `insights.txt`.
+
+---
+
+## 🛠️ Tools Used
+
+- SQL (SQLite)
+- Google Sheets
+- GitHub
+
+---
+
+## 💎 Final Thought
+
+> Conversion is driven by the alignment between user intent, product perception, experience, and communication clarity.
+
+> This project demonstrates how data analysis, marketing strategy, CRM thinking, and linguistic structuring can be combined to better understand and optimize user behavior.
 
 
 
