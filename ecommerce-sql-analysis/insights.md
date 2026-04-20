@@ -1,247 +1,128 @@
-# DETAILED INSIGHTS – E-commerce Funnel, Behavior & Conversion Analysis
+# DETAILED INSIGHTS – E-commerce Funnel & User Behavior Analysis
 
 ---
 
-## 📊 1. Funnel Performance & Conversion Inefficiency
+## 📊 1. Funnel Performance
 
-The funnel shows significant drop-offs at every stage of the purchase journey:
+- Viewers: 3,946  
+- Cart: 948  
+- Purchases: 144  
+- Conversion rate: 3.4%  
 
-- Product Views: 5,544
-- Add to Cart: 1,122
-- Purchases: 145
-- View → Cart: ~20%
-- Cart → Purchase: ~13%
-- Overall Conversion Rate: ~3.4%
-
-→ The largest friction points occur between product discovery and cart addition, and again between cart and purchase.
-
-### Interpretation
-This suggests that conversion is limited by both:
-- insufficient product engagement early in the journey
-- friction or hesitation at the final purchase stage
-
-In other words, the funnel is not failing at one single point — it is losing users progressively across the entire decision process.
+→ Significant drop-offs at each stage:
+- ~76% drop from view → cart  
+- ~85% drop from cart → purchase  
 
 ---
 
-## 👤 2. User Behavior Suggests a Multi-Step Decision Process
+## 👤 2. User Behavior
 
-The analysis shows that conversion increases with repeated interactions:
+Session-level analysis shows that:
 
-- 1 interaction → no conversion
-- 3–4 interactions → highest conversion
+- Sessions with 1 interaction rarely convert  
+- Sessions with 3–4 interactions show higher conversion rates  
 
-→ Users do not convert immediately. They appear to need time to explore, compare, and validate before purchasing.
-
-### Interpretation
-This reflects a behavioral pattern common in e-commerce:
-- first interaction = discovery
-- repeated interaction = evaluation
-- later interaction = possible commitment
-
-This means the business should not treat non-converting sessions as failures only, but also as signals of interest and future conversion potential.
+→ Users require multiple interactions before purchasing.
 
 ---
 
-## 💰 3. Conversion Is Influenced by Perceived Value, Not Just Price
+## 💰 3. Revenue Structure
 
-Conversion by price range remains relatively low across all groups, but mid-priced products underperform compared with both low- and high-priced products.
+- Total revenue: 8,361.89  
+- Purchases: 144  
+- Average revenue per purchase: ~58.07  
 
-- Low price → ~2.5%
-- Mid price → ~1.9%
-- High price → ~2.3%
-
-→ This suggests that price alone does not determine conversion.
-
-### Interpretation
-If high-priced items can still convert, then users are not simply looking for the cheapest option. They are responding to perceived value.
-
-The underperformance of mid-range products may indicate:
-- unclear positioning
-- weak differentiation
-- insufficient justification of value
-
-This is a marketing and communication issue as much as a pricing issue.
+→ Revenue depends on a small number of transactions.
 
 ---
 
-## ⏱️ 4. Traffic Growth Does Not Automatically Generate Revenue
+## 🛒 4. Cart Abandonment
 
-The project shows that user sessions increase over time while purchases decline.
+- Cart users: 948  
+- Purchases: 144  
+- Abandoned carts: ~804 users  
+- Cart → purchase conversion: 15.2%  
 
-→ This reveals a disconnect between acquisition and conversion.
-
-### Interpretation
-More traffic does not necessarily mean better business performance.
-
-Possible explanations include:
-- low-intent traffic
-- weak targeting
-- mismatch between campaign promise and on-site experience
-- insufficient product reassurance once users land on the site
-
-This points to a quality-of-traffic issue rather than a simple traffic volume issue.
+→ Strong hesitation before purchase.
 
 ---
 
-## 🏷️ 5. Brand Performance Highlights the Role of Trust and Positioning
+## 🏷️ 5. Brand Influence
 
-Some brands outperform others regardless of traffic volume.
+Top-performing brands (e.g., Irisk, Runail) account for a large share of purchases.
 
-→ Brand conversion is not only about visibility. It is also about:
-- trust
-- familiarity
-- perceived quality
-- message clarity
-
-### Interpretation
-Users appear more willing to purchase when a brand already communicates enough reassurance or credibility.
-
-This means brand performance can serve as a proxy for:
-- stronger positioning
-- more convincing product perception
-- clearer customer expectations
+→ Suggests that trust and familiarity influence user decisions.
 
 ---
 
-## 🛒 6. Cart Abandonment Indicates Friction Near Purchase
+## ⏱️ 6. Time Trends
 
-The gap between cart additions (1,122) and purchases (145) is substantial.
+Revenue by month:
 
-→ A large share of purchase intent is lost before checkout completion.
+- 2019-10 → 2,425.44  
+- 2019-11 → 1,795.85  
+- 2020-01 → 1,093.84  
+- 2020-02 → 1,264.07  
 
-### Interpretation
-This is one of the strongest signals in the project.
-
-Likely contributors include:
-- pricing hesitation
-- unexpected costs
-- delivery concerns
-- payment friction
-- last-minute uncertainty
-
-This stage reflects a trust and reassurance problem, not just a transactional problem.
+→ Revenue fluctuates across months with no consistent growth pattern.
 
 ---
 
-## 🔍 7. Product Structure and Category Clarity Affect Engagement
+## ⚠️ 7. Structural Issue
 
-The project includes a linguistic structuring perspective on product categories and naming.
+The data shows an **intent-to-conversion gap**:
 
-→ Product organization is not neutral: it directly shapes how users understand and navigate the catalog.
+- 3,946 users view products  
+- Only 144 complete a purchase  
 
-### Interpretation (Linguistic Perspective)
-When labels are unclear, overly complex, or inconsistent:
-- users face more cognitive load
-- product comparison becomes harder
-- confidence decreases
-
-When categories are simpler and semantically clearer:
-- navigation improves
-- decision-making becomes easier
-- engagement can increase
-
-Language is part of the user experience.
+→ Users engage but do not convert.
 
 ---
 
-## 🤝 8. CRM Perspective: Non-Converting Users Still Have Value
+## 🧠 8. Behavioral Interpretation
 
-Because conversion often requires multiple interactions, many users who do not purchase immediately may still represent qualified interest.
+Users follow a decision process:
 
-→ This creates strong CRM opportunities.
+- exploration  
+- comparison  
+- hesitation  
 
-### Interpretation
-The data suggests that the company could benefit from:
-- retargeting engaged non-buyers
-- abandoned cart recovery flows
-- follow-up communication
-- repeated trust-building touchpoints
-
-From a CRM perspective, the goal is not only to convert now, but to continue nurturing intent over time.
+→ Conversion depends on confidence, not just interaction.
 
 ---
 
-## ⚠️ 9. Core Business Diagnosis
+## 🤝 9. CRM Perspective
 
-The funnel reveals a broader structural issue:
+Non-converting users represent opportunity:
 
-- traffic exists
-- product views exist
-- some cart intent exists
-- but conversion remains weak
+- ~804 abandoned cart users  
+- High number of engaged sessions without purchase  
 
-→ The business appears to face an **intent-to-conversion gap**.
-
-### Diagnosis
-This gap likely comes from the interaction of:
-- weak product engagement
-- insufficient value communication
-- friction at checkout
-- uneven brand trust
-- limited retention / nurturing mechanisms
-
-This is not just a performance issue. It is a journey design issue.
+→ Strong potential for:
+- retargeting  
+- cart recovery  
+- repeated engagement  
 
 ---
 
-## 💡 10. Strategic Opportunities
+## 🎯 10. Final Diagnosis
 
-### Product & Merchandising
-- Improve product descriptions and value communication
-- Clarify category structure and product labeling
-- Strengthen mid-range product positioning
+The main issue is not traffic, but conversion.
 
-### Funnel Optimization
-- Reduce checkout friction
-- Increase pricing transparency
-- Reassure users at key decision points
-
-### Marketing
-- Focus on intent-driven traffic rather than volume alone
-- Align acquisition messaging with actual product experience
-- Use brand-level insights to identify what builds trust
-
-### CRM & Retention
-- Retarget users with repeated interactions
-- Recover abandoned carts
-- Build post-visit nurturing flows
+→ The business needs to:
+- improve user confidence  
+- reduce friction  
+- align experience with expectations  
 
 ---
 
-## 🧠 11. Behavioral & Multidisciplinary Interpretation Layer
+## 🧠 11. Personal Insight
 
-This project is not only about SQL metrics.
+This analysis combines data with behavioral interpretation.
 
-It reflects how data, marketing, CRM, and language interact in shaping user behavior.
+User actions reflect:
+- decision-making patterns  
+- perception of value  
+- trust and hesitation  
 
-From my perspective, data points such as:
-- repeated sessions
-- cart abandonment
-- brand-level differences
-- price-range conversion gaps
-
-can be read not only as technical outcomes, but also as signals of:
-- hesitation
-- perception
-- trust
-- cognitive load
-- decision-making complexity
-
-This is where my background in linguistics and customer-facing operations adds value:
-I approach data not only as numerical output, but as evidence of how people interpret information and make choices.
-
----
-
-## 🎯 12. Final Business Conclusion
-
-This analysis shows that low conversion is not caused by a single isolated issue.
-
-It is the result of misalignment between:
-- user intent
-- product perception
-- journey friction
-- communication clarity
-
-→ Final strategic direction:
-shift from simply attracting traffic to improving how users understand, trust, and move through the purchase journey.
+→ Data is not only quantitative, but also behavioral.
