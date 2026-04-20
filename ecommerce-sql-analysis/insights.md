@@ -45,7 +45,7 @@ This means the business should not treat non-converting sessions as failures onl
 
 ## 💰 3. Conversion Is Influenced by Perceived Value, Not Just Price
 
-Conversion by price range remains relatively low across all groups, but mid-priced products underperform compared with both low- and high-priced products. :contentReference[oaicite:1]{index=1}
+Conversion by price range remains relatively low across all groups, but mid-priced products underperform compared with both low- and high-priced products.
 
 - Low price → ~2.5%
 - Mid price → ~1.9%
@@ -67,7 +67,7 @@ This is a marketing and communication issue as much as a pricing issue.
 
 ## ⏱️ 4. Traffic Growth Does Not Automatically Generate Revenue
 
-The project shows that user sessions increase over time while purchases decline. :contentReference[oaicite:2]{index=2}
+The project shows that user sessions increase over time while purchases decline.
 
 → This reveals a disconnect between acquisition and conversion.
 
@@ -86,7 +86,7 @@ This points to a quality-of-traffic issue rather than a simple traffic volume is
 
 ## 🏷️ 5. Brand Performance Highlights the Role of Trust and Positioning
 
-Some brands outperform others regardless of traffic volume. :contentReference[oaicite:3]{index=3}
+Some brands outperform others regardless of traffic volume.
 
 → Brand conversion is not only about visibility. It is also about:
 - trust
@@ -106,7 +106,7 @@ This means brand performance can serve as a proxy for:
 
 ## 🛒 6. Cart Abandonment Indicates Friction Near Purchase
 
-The gap between cart additions (1,122) and purchases (145) is substantial. :contentReference[oaicite:4]{index=4}
+The gap between cart additions (1,122) and purchases (145) is substantial.
 
 → A large share of purchase intent is lost before checkout completion.
 
@@ -126,7 +126,7 @@ This stage reflects a trust and reassurance problem, not just a transactional pr
 
 ## 🔍 7. Product Structure and Category Clarity Affect Engagement
 
-The project includes a linguistic structuring perspective on product categories and naming. :contentReference[oaicite:5]{index=5}
+The project includes a linguistic structuring perspective on product categories and naming.
 
 → Product organization is not neutral: it directly shapes how users understand and navigate the catalog.
 
@@ -147,7 +147,7 @@ Language is part of the user experience.
 
 ## 🤝 8. CRM Perspective: Non-Converting Users Still Have Value
 
-Because conversion often requires multiple interactions, many users who do not purchase immediately may still represent qualified interest. :contentReference[oaicite:6]{index=6}
+Because conversion often requires multiple interactions, many users who do not purchase immediately may still represent qualified interest.
 
 → This creates strong CRM opportunities.
 
