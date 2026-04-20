@@ -6,3 +6,144 @@ Revenue analysis shows a total of 8,361.85, with the highest revenue recorded in
 A small number of brands, such as Irisk and Runail, dominate purchases, indicating strong brand-driven customer preferences.
 Purchases are distributed across multiple products, suggesting the absence of a single dominant best-seller and a diverse demand across the product catalog.
 Some product categories contribute minimally to total revenue, indicating potential opportunities for optimization or product portfolio adjustment.
+
+
+
+
+
+E-COMMERCE ANALYSIS – STRATEGIC INSIGHTS
+
+--------------------------------------------------
+
+1. Funnel Analysis
+
+The funnel reveals two major drop-off points:
+- View → Cart (~80%)
+- Cart → Purchase (~87%)
+
+This indicates that conversion issues occur both at the product engagement level and at the checkout stage.
+
+This suggests a systemic issue rather than a single-point failure.
+
+--------------------------------------------------
+
+2. User Behavior
+
+Sessions with only one interaction never convert.
+
+Conversion increases with the number of interactions and peaks around 3–4 actions per session.
+
+This reflects a progressive decision-making process where users:
+- explore
+- compare
+- validate
+
+before purchasing.
+
+Engagement depth is therefore a key driver of conversion.
+
+--------------------------------------------------
+
+3. Marketing Insight
+
+Traffic increases over time while purchases decrease.
+
+This suggests that:
+- traffic quality may be declining
+- campaigns may be attracting low-intent users
+- messaging may not align with user expectations
+
+This highlights a gap between acquisition strategy and conversion performance.
+
+--------------------------------------------------
+
+4. Sales Insight
+
+Conversion rates are low, but average order value remains relatively high.
+
+This indicates that:
+- users who convert are high-value customers
+- revenue potential exists within current traffic
+
+The main opportunity is to improve conversion rather than increase traffic.
+
+--------------------------------------------------
+
+5. Customer Experience (CX)
+
+The largest drop-off occurs at checkout.
+
+Possible friction points:
+- unexpected costs (shipping, taxes)
+- limited payment options
+- long delivery times
+- complex checkout process
+
+This suggests that conversion loss is strongly linked to user experience.
+
+--------------------------------------------------
+
+6. Price Perception
+
+Mid-priced products show the lowest conversion rate.
+
+This suggests unclear positioning:
+- low price = accessible
+- high price = perceived quality
+- mid price = ambiguous
+
+User decisions are influenced more by perceived value than actual price.
+
+--------------------------------------------------
+
+7. Brand Influence
+
+Some brands outperform others despite lower traffic.
+
+This indicates that:
+- trust
+- positioning
+- perceived quality
+
+are stronger drivers of conversion than visibility alone.
+
+--------------------------------------------------
+
+8. Linguistic Insight
+
+Category structure and product naming impact user behavior.
+
+Complex or unclear labels increase cognitive load and reduce engagement.
+
+Simplifying category structures improves interpretability and navigation.
+
+This highlights the role of language as part of the user experience.
+
+--------------------------------------------------
+
+9. Strategic Synthesis
+
+Conversion performance is driven by the interaction between:
+- user intent
+- engagement level
+- perceived value
+- user experience
+- clarity of communication
+
+Improving only one dimension is insufficient.
+
+A holistic approach is required.
+
+--------------------------------------------------
+
+10. Potential Experiments
+
+- A/B testing discounts on mid-priced products
+- Simplifying checkout flow
+- Testing different payment options
+- Improving product descriptions and UX
+- Refining targeting to focus on high-intent users
+
+--------------------------------------------------
+
+END OF INSIGHTS
