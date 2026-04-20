@@ -6,64 +6,51 @@ This project analyzes user behavior in an e-commerce dataset to understand how u
 
 👉 Key insight: despite 3,946 users viewing products, only 144 complete a purchase (3.4% conversion rate), highlighting a strong gap between engagement and conversion.
 
-Using SQL, this project explores funnel performance, purchase behavior, revenue trends, and session-level interaction patterns to generate actionable business insights.
+This project complements my Sales & Marketing analysis by focusing on user behavior and conversion dynamics rather than pricing and profitability.
 
 ---
 
-## 🎯 Objective
+## 📌 Business Context
 
-The goal of this project is to:
+Understanding conversion is critical in e-commerce.
 
-- analyze the e-commerce conversion funnel
-- identify major drop-off points
-- understand how user behavior relates to purchasing
-- evaluate revenue performance
-- connect data insights to business, marketing, and customer journey decisions
+Even with strong traffic, revenue remains limited if users do not complete purchases.
+
+This project explores how user interactions translate (or fail to translate) into actual conversion.
+
+---
+
+## 🎯 Objectives
+
+- Analyze the conversion funnel  
+- Identify major drop-off points  
+- Understand user behavior patterns  
+- Evaluate revenue performance  
+- Connect data insights to business and customer journey decisions  
 
 ---
 
 ## 🗂️ Dataset
 
-The dataset used in this project is stored in `ecommerce_sample.csv`.
+The dataset comes from Kaggle and includes:
 
-It comes from Kaggle and contains anonymized e-commerce interaction data, including:
-
-- `event_time`
-- `event_type` (`view`, `cart`, `purchase`, `remove_from_cart`)
-- `product_id`
-- `category_code`
-- `brand`
-- `price`
-- `user_id`
-- `user_session`
-
-While this is sample data rather than production data, it provides a realistic environment for analyzing user behavior and conversion patterns.
-
----
-
-## 🛠️ Tools Used
-
-- SQL (SQLite)
-- CSV dataset
-- GitHub
-
----
-
-## 📁 Repository Structure
-
-- `ecommerce_sample.csv` → dataset used for the analysis  
-- `queries.sql` → SQL queries used to explore funnel, behavior, and revenue  
-- `insights.md` → detailed insights and business interpretation  
-- `README.md` → project documentation  
+- event_time  
+- event_type (view, cart, purchase, remove_from_cart)  
+- product_id  
+- category_code  
+- brand  
+- price  
+- user_id  
+- user_session  
 
 ---
 
 ## 📊 Key Metrics
 
 ### Funnel Performance
-- Users who viewed products: **3,946**
-- Users who added to cart: **948** (**24% conversion**)
-- Users who completed a purchase: **144** (**15.2% from cart**)
+- Product viewers: **3,946**
+- Add to cart: **948** (**24% conversion**)
+- Purchases: **144** (**15.2% from cart**)
 - Overall conversion rate: **3.4%**
 
 ### Revenue
@@ -75,101 +62,107 @@ While this is sample data rather than production data, it provides a realistic e
 - 2020-01 → **1,093.84**
 - 2020-02 → **1,264.07**
 
-👉 This means that **only ~1 in 27 users converts**, despite consistent user activity.
-
 ---
 
 ## 🔍 Key Insights
 
-### 🧭 Funnel Performance
-Out of 3,946 users who view products, only 948 add items to cart and 144 complete a purchase.
+### 📊 Funnel Performance
+There are major drop-offs at each stage:
 
-👉 This represents:
-- ~76% drop-off from view → cart  
-- ~85% drop-off from cart → purchase  
+- ~76% drop from view → cart  
+- ~85% drop from cart → purchase  
 
-👉 This shows that user intent decreases significantly at each stage of the funnel.
+👉 Only a small proportion of users complete the full journey.
 
 ---
 
 ### 👤 User Behavior
-Session-level analysis shows that sessions with **1 interaction do not convert**, while sessions with **3–4 interactions show the highest conversion rates**.
+Sessions with more interactions show higher conversion.
 
-👉 This indicates that users require multiple touchpoints before purchasing.
+👉 Users typically:
+- explore  
+- compare  
+- return  
 
----
-
-### 💰 Revenue & Conversion
-Total revenue is **8,361.89**, generated from only **144 purchases**.
-
-👉 Average revenue per purchase is relatively high, meaning:
-- each conversion has strong value  
-- improving conversion rate could significantly increase revenue  
+before purchasing.
 
 ---
 
-### 🏷️ Brand & Product Patterns
-A small number of brands (e.g., Irisk, Runail) account for a large share of purchases.
+### 💰 Revenue Efficiency
+Revenue (8,361.89) is generated from only 144 purchases.
 
-👉 This suggests that:
-- users rely on familiar or trusted brands  
-- brand perception plays a role in conversion  
+👉 This means each conversion has significant value.
+
+---
+
+### 🏷️ Brand Influence
+A small number of brands dominate purchase activity.
+
+👉 Suggests that trust and familiarity influence decisions.
 
 ---
 
 ### 🛒 Cart Friction
-With 948 users adding items to cart but only 144 completing a purchase:
+- 948 users add to cart  
+- only 144 purchase  
 
-👉 ~804 users abandon before purchase  
-
-👉 This indicates strong hesitation at the final stage of the funnel.
+👉 ~804 users drop before completing purchase.
 
 ---
 
-### ⏱️ Time-Based Trends
-Revenue decreases from **2,425.44 in October** to **1,093.84 in January**, before slightly recovering.
+### ⏱️ Time Trends
+Revenue fluctuates without consistent growth.
 
-👉 This suggests fluctuations in performance rather than consistent growth.
+👉 Suggests variability in performance over time.
+
+---
+
+## ⚠️ Core Business Diagnosis
+
+The analysis reveals a clear gap between user activity and conversion:
+
+- 3,946 users view products  
+- only 144 complete a purchase  
+
+👉 The business faces an **intent-to-conversion gap**, where users engage but do not reach sufficient confidence to purchase.
 
 ---
 
 ## 🧠 Behavioral Interpretation
 
-Conversion reflects a decision-making process where users:
+Conversion reflects a multi-step decision-making process.
+
+Users:
 - explore products  
 - compare options  
 - hesitate before committing  
 
-👉 The drop from 3,946 viewers to 144 buyers suggests that most users do not reach sufficient confidence to purchase.
+👉 The large drop-off indicates that most users do not reach sufficient confidence to purchase.
 
 ---
 
 ## 🤝 CRM & Customer Journey Perspective
 
-Users who:
-- view products  
-- add items to cart  
-- interact multiple times  
+Non-converting users still represent strong intent signals.
 
-represent strong purchase intent, even if they do not convert immediately.
+With ~804 abandoned cart users, there is significant opportunity for:
 
-👉 With 804 abandoned cart users, there is significant opportunity for:
 - retargeting  
 - cart recovery  
 - follow-up engagement  
 
 ---
 
-## 🧠 Personal Approach
+## 🧠 Personal Approach (Data × Behavior × CRM)
 
-My approach combines:
+This project reflects my approach to combining:
 
-- SQL-based data analysis  
-- marketing and e-commerce reasoning  
-- CRM and customer journey thinking  
-- behavioral interpretation  
+- data analysis (SQL)  
+- marketing thinking  
+- customer behavior understanding  
 
-With a background in linguistics and data science, I interpret user actions not only as data points, but as signals of:
+With a background in linguistics, I analyze user actions not only as data points, but as signals of:
+
 - decision-making  
 - perception of value  
 - hesitation and trust  
@@ -179,38 +172,34 @@ With a background in linguistics and data science, I interpret user actions not 
 ## 💡 Strategic Recommendations
 
 ### Funnel Optimization
-- Reduce drop-off between cart (948 users) and purchase (144 users)  
-- Improve clarity and reassurance at checkout  
+- Reduce drop-off between cart and purchase  
+- Improve clarity at checkout  
 
 ---
 
 ### User Engagement
-- Encourage multiple interactions (3–4 interactions correlate with higher conversion)  
-- Improve product visibility and navigation  
+- Encourage multiple interactions  
+- Improve product visibility  
 
 ---
 
-### CRM Opportunities
-- Target the ~804 users who abandon carts  
+### CRM Strategy
+- Target ~804 cart abandoners  
 - Retarget engaged users  
-- Build repeated touchpoints before purchase  
+- Build trust through repeated touchpoints  
 
 ---
 
 ## 📁 Additional Analysis
 
-👉 See `insights.md` for detailed insights and deeper interpretation.
+👉 See `insights.md` for detailed analysis.
 
 ---
 
 ## 💎 Final Thought
 
-Conversion is not driven by a single factor.
+The gap between **3,946 users and 144 buyers** shows that conversion is not only a technical issue.
 
-The gap between **3,946 product viewers and 144 buyers** shows that conversion depends on:
-- user intent  
-- perception of value  
-- interaction depth  
-- confidence at the moment of purchase  
+👉 It is a behavioral and perception challenge.
 
-👉 Improving conversion requires understanding how users think, not just what they click.
+Improving conversion requires understanding how users think, not just what they click.
