@@ -130,7 +130,7 @@ Some states consistently generate negative profit.
 
 ### 👥 Customer Segment Performance
 
-1[Customer Segmentation](images/customer-segmentation.png)
+![Customer Segmentation](images/customer-segmentation.png)
 - Mid-value segment → **~$1.29M revenue | 11.49% margin** → drive most revenue
 - High-value segment → **~$140K profit | 13.27% margin** → generate stronger profitability  
 - Low-value segment → minimal contribution  
