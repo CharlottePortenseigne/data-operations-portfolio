@@ -1,20 +1,24 @@
-# 📊 Sales, Marketing & Revenue Performance Analysis (Google Sheets)
+# 📊 Sales, Marketing & Revenue Profitability Analysis (Google Sheets)
 
 ## 🚀 Project Summary
 
 This project uncovers a key structural issue in e-commerce performance:
 
-👉 Revenue growth is driven by discounting, but at the expense of profitability.
+👉 **Revenue growth is driven by discounting, but at the expense of profitability.**
 
-Through data analysis and behavioral interpretation, it highlights how pricing strategy, customer segmentation, and perceived value interact to shape business outcomes.
+Through data analysis and behavioral interpretation, this project explores how pricing strategy, customer segmentation, and perceived value interact to shape business performance.
 
 ---
 
 ## 📌 Business Context
 
-This project analyzes e-commerce sales and profitability data to understand how revenue is generated, how marketing and pricing strategies impact performance, and where opportunities exist to improve both growth and efficiency.
+An e-commerce company generates strong revenue but struggles with profitability.
+The goal is to understand:
 
-The objective is not only to analyze data, but to connect insights to real-world marketing, customer behavior, and business strategy.
+- How revenue is generated
+- Why profitability remains low
+- Where inefficiencies exist
+- How to improve performance through data-driven strategy
 
 ---
 
@@ -23,20 +27,21 @@ The objective is not only to analyze data, but to connect insights to real-world
 - Analyze revenue vs profitability dynamics  
 - Evaluate the impact of discount strategies  
 - Identify high-value customer segments  
-- Understand regional and product performance  
-- Translate data insights into actionable business decisions  
+- Assess regional and product performance  
+- Translate insights into actionable business decisions  
 
 ---
 
 ## 📊 Data Overview
 
-The dataset spans 5 months, with approximately 5,000 records per month (~25,000 total rows).
+~25,000 total rows (5 months, ~5,000/month)
+Source: Kaggle Superstore dataset
 
-It includes:
+Key variables:
 
-- Sales and profit data  
-- Product categories: Technology, Office Supplies, Furniture  
-- Customer segments: Consumer, Corporate, Home Office  
+- Sales, Profit, Discount
+- Product categories (Technology, Office Supplies, Furniture) & sub-category  
+- Customer segments (Consumer, Corporate, Home Office)  
 - Geographic performance (Region and State)  
 - Order-level data  
 
