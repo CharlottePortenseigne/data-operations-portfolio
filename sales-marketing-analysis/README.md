@@ -45,7 +45,21 @@ Key variables:
 - Geographic performance (Region and State)  
 - Order-level data  
 
-This structure enables both cross-sectional and time-based analysis.
+---
+
+## 📈 Key Metrics
+
+- **Total Revenue:** $2,297,200.86  
+- **Total Profit:** $286,397.02  
+- **Profit Margin:** 12.03%  
+- **Total Orders:** 5,009  
+- **Average Order Value (AOV):** $458.61
+
+---
+
+## 📊 Dashboard Overview
+
+![Dashbo
 
 ---
 
