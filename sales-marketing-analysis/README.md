@@ -49,14 +49,10 @@ Key variables:
 
 ## 🧹 Data Preparation & Feature Engineering
 
----
-
 ### Data Cleaning
 - Standardized date formats  
 - Cleaned customer names  
 - Standardized product categories and sub-categories
-
----
 
 ### Feature Engineering
 - Month / Year  
@@ -67,8 +63,6 @@ Key variables:
 - Profit_Status  
 
 These transformations allow for deeper business and behavioral analysis.
-
----
 
 ### Data Validation
 - Error_Check column to flag:
@@ -90,6 +84,7 @@ These transformations allow for deeper business and behavioral analysis.
 ## 📊 Dashboard Overview
 
 ![Dashboard](images/dashboard-overview.png)
+
 This dashboard provides a complete view of revenue performance, profitability drivers, and business risks.
 It highlights how discount strategies, customer behavior, and product performance impact overall profitability.
 
@@ -117,6 +112,7 @@ Discount strategy is the primary driver of profitability loss:
 ### 📦 Product-Level Profitability
 
 ![Product Profitability](images/product-profitability.png)
+
 Sub-category analysis reveals that high sales do not necessarily translate into high profit.
 Several products operate at low or negative margins, indicating pricing inefficiencies or cost structure issues.
 
@@ -125,6 +121,7 @@ Several products operate at low or negative margins, indicating pricing ineffici
 ### ⚠️ Risk Identification
 
 ![Risk Analysis](images/risk-analysis.png)
+
 Some states consistently generate negative profit.
 
 👉 These areas represent operational and financial risks requiring targeted strategic action.
