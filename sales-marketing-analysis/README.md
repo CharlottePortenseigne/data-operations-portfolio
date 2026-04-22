@@ -47,28 +47,16 @@ Key variables:
 
 ---
 
-## 📈 Key Metrics
-
-- **Total Revenue:** $2,297,200.86  
-- **Total Profit:** $286,397.02  
-- **Profit Margin:** 12.03%  
-- **Total Orders:** 5,009  
-- **Average Order Value (AOV):** $458.61
-
----
-
-## 📊 Dashboard Overview
-
-![Dashbo
-
----
-
 ## 🧹 Data Preparation & Feature Engineering
+
+---
 
 ### Data Cleaning
 - Standardized date formats  
 - Cleaned customer names  
-- Standardized product categories and sub-categories  
+- Standardized product categories and sub-categories
+
+---
 
 ### Feature Engineering
 - Month / Year  
@@ -79,6 +67,8 @@ Key variables:
 - Profit_Status  
 
 These transformations allow for deeper business and behavioral analysis.
+
+---
 
 ### Data Validation
 - Error_Check column to flag:
@@ -93,37 +83,71 @@ These transformations allow for deeper business and behavioral analysis.
 - **Total Profit:** $286,397.02  
 - **Profit Margin:** 12.03%  
 - **Total Orders:** 5,009  
-- **Average Order Value (AOV):** $458.61  
+- **Average Order Value (AOV):** $458.61
+
+---
+
+## 📊 Dashboard Overview
+
+![Dashboard](images/dashboard-overview.png)
+This dashboard provides a complete view of revenue performance, profitability drivers, and business risks.
+It highlights how discount strategies, customer behavior, and product performance impact overall profitability.
 
 ---
 
 ## 🔍 Key Insights
 
-### 💰 Revenue vs Profitability
-Strong revenue ($2.29M) compared to lower profit ($286K), with a profit margin of 12.03%.
-
-👉 Growth is driven by volume rather than margin efficiency.
-
 ---
 
-### 💸 Discount Strategy Impact
-Discounting is the primary driver of profitability loss:
+### 💸 Discount Impact on Profitability
+
+![Discount Impact](images/discount-impact.png)
+
+Discount strategy is the primary driver of profitability loss:
 
 - High discounts → **- $75,559 profit | -113.88% margin**  
 - Medium discounts → **- $58,817 profit | -21.97% margin**  
 - Low discounts → **$100,785 profit | 17.44% margin**  
 - No discounts → **$320,987 profit | 34.02% margin**  
 
-👉 Profitability is largely driven by low or no-discount transactions.
+👉 Revenue growth is driven by discounting at the expense of profitability.
+
+---
+
+### 📦 Product-Level Profitability
+
+![Product Profitability](images/product-profitability.png)
+Sub-category analysis reveals that high sales do not necessarily translate into high profit.
+Several products operate at low or negative margins, indicating pricing inefficiencies or cost structure issues.
+
+---
+
+### ⚠️ Risk Identification
+
+![Risk Analysis](images/risk-analysis.png)
+Some states consistently generate negative profit.
+
+👉 These areas represent operational and financial risks requiring targeted strategic action.
 
 ---
 
 ### 👥 Customer Segment Performance
-- Mid-value segment → **~$1.29M revenue | 11.49% margin**  
-- High-value segment → **~$140K profit | 13.27% margin**  
+
+1[Customer Segmentation](images/customer-segmentation.png)
+- Mid-value segment → **~$1.29M revenue | 11.49% margin** → drive most revenue
+- High-value segment → **~$140K profit | 13.27% margin** → generate stronger profitability  
 - Low-value segment → minimal contribution  
 
-👉 Revenue is volume-driven, while profitability is value-driven.
+👉 Profitability is driven by value, not volume.
+
+---
+
+## 🧠 Behavioral Interpretation
+
+
+
+
+
 
 ---
 
@@ -232,24 +256,24 @@ Combined with hands-on CRM experience, I focus on translating data into actionab
 
 ---
 
-## 🚀 Potential Impact
+## 🚀 Business Impact
 
-Optimizing pricing, targeting, and customer strategy could significantly improve profitability without increasing total revenue.
+Optimizing pricing and customer strategy could significantly improve profitability without increasing total revenue.
 
 ---
 
 ## 🧰 Tools Used
 
 - Google Sheets  
-- Data analysis & dashboarding  
-- Data visualization  
+- Data visualization
+- Business analysis
 
 ---
 
 ## 🔗 Project Access
 
-📊 Google Sheets Dashboard:  
-https://docs.google.com/spreadsheets/d/1gzA6Ku7CxS1w-KYSprdfvAq9RMvU_k_YoeLQr71aItg/edit  
+📊 Dashboard:  
+https://docs.google.com/spreadsheets/d/1YhOCNmXWOkUpdLNnbfJdccVdRp_H8l0t3xKxZvTdnXw/edit?usp=sharing
 
-💻 GitHub Repository:  
+💻 GitHub:  
 https://github.com/CharlottePortenseigne/data-operations-portfolio.git  
