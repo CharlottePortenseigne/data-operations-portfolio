@@ -113,7 +113,7 @@ Discount strategy is the primary driver of profitability loss:
 
 ![Product Profitability](images/product-profitability.png)
 
-Sub-category analysis reveals that high sales do not necessarily translate into high profit.
+Sub-category analysis reveals that high sales do not necessarily translate into high profit (for example: Table, Bookcase and Supplies).
 Several products operate at low or negative margins, indicating pricing inefficiencies or cost structure issues.
 
 ---
