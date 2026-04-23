@@ -139,15 +139,6 @@ Some states consistently generate negative profit.
 
 ---
 
-## 🧠 Behavioral Interpretation
-
-
-
-
-
-
----
-
 ### 🌍 Regional Performance
 - West & East → highest performance  
 - South & Central → underperform  
@@ -156,20 +147,26 @@ Some states consistently generate negative profit.
 
 ---
 
-### 📅 Time-Based Analysis
-Sales remain stable across the 5-month period.
-
-👉 No strong seasonal variation observed.
-
----
-
 ## 🧠 Behavioral Interpretation
 
-Beyond numerical performance, the data reveals clear customer behavior patterns:
+From a **marketing perspective**:
 
-- Heavy discount usage suggests price-sensitive purchasing behavior  
-- High-value customers show more stable and profitable patterns  
-- Mid-market segments are driven by volume rather than long-term value  
+- Discount act as a **value signal**, attracting price-sensitive customers.
+- This creates dependency on promotions rather than brand value.
+
+From a **CRM perspective**:
+
+- performance differences may be influenced by: Targeting Strategy, Channel Selection and Data Quality  
+- Customer experience also plays a critical role. Even without immediate conversion, positive interactions can improve retention, engagement, and long-term value.
+
+From a **linguistics perspective**:
+
+- Pricing communicates positioning.
+- Frequent discounting reduces perceived product value.
+
+From a **customer experience perspective**:
+
+- Customer behavior is reactive (price-driven), not loyalty-driven.
 
 👉 This is not only a pricing issue, but a customer behavior and positioning challenge.
 
@@ -177,10 +174,11 @@ Beyond numerical performance, the data reveals clear customer behavior patterns:
 
 ## ⚠️ Core Business Diagnosis
 
-👉 The business appears to operate in a **“discount-driven growth loop”**:
+👉 **Discount-Driven Growth Loop**
 
-- Sales volume increases through discounting  
-- Profitability decreases as margins are reduced  
+- Discounts increase sales  
+- Profit margins decrease
+- Growth becomes inefficient
 
 👉 This creates a structural inefficiency limiting long-term growth.
 
@@ -190,28 +188,19 @@ Beyond numerical performance, the data reveals clear customer behavior patterns:
 
 ### 🎯 Pricing Strategy
 - Reduce high and medium discount levels  
-- Apply discounts selectively on high-margin products  
+- Apply discounts selectively 
 
 ### 👥 Customer Strategy
 - Focus on high-value customers  
-- Reduce dependency on discount-driven segments  
+- Reduce reliance on price-sensitive segments
 
-### 📦 Product Optimization
-- Reassess low-profit products  
-- Optimize pricing and cost structures  
+### 📦 Product Strategy
+- Optmize low-margin products 
+- Adjust pricing and cost structure
 
 ### 🌍 Regional Strategy
-- Invest in high-performing regions  
-- Improve targeting in underperforming areas  
-
----
-
-## 🧪 Testing Approach
-
-- Test discount reduction strategies  
-- Compare performance across segments  
-- Evaluate targeting of high-value customers  
-- Test retention and repeat purchase strategies  
+- Improve underperforming regions  
+- Invest in high-performing areas
 
 ---
 
@@ -231,25 +220,6 @@ From a CRM perspective, performance differences may be influenced by:
 - Data quality  
 
 Customer experience also plays a critical role. Even without immediate conversion, positive interactions can improve retention, engagement, and long-term value.
-
----
-
-## 🧠 Personal Approach (Data × Marketing × Behavior)
-
-This project reflects my approach to combining:
-
-- Data analysis  
-- Marketing strategy  
-- Customer behavior understanding  
-
-With a background in linguistics and computational analysis, I approach data not only as numbers, but as signals of human behavior, decision-making, and perception.
-
-This allows me to:
-- interpret patterns beyond surface-level metrics  
-- connect data insights to customer psychology  
-- understand how messaging, structure, and positioning influence performance  
-
-Combined with hands-on CRM experience, I focus on translating data into actionable strategies aligned with real-world business operations.
 
 ---
 
