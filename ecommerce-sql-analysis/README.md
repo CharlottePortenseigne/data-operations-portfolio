@@ -250,19 +250,6 @@ High-intent users who do not convert represent the biggest opportunity:
 
 ---
 
-## 📁 Project Structure
-ecommerce-sql-analysis/
-
-├── ecommerce_sample.csv
-
-├── queries.sql
-
-├── README.md
-
-└── insights.md
-
----
-
 ## 💎 Final Thought
 
 The gap between **3,946 users and 144 buyers** shows that conversion is not a traffic issue.
