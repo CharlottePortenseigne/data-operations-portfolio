@@ -81,7 +81,7 @@ Sales remain stable across 5 months.
 
 ---
 
-## ⚠️ 7. Risk Identification
+## ⚠️ 8. Risk Identification
 
 Top loss-making states consistently generate negative profit.
 
@@ -94,7 +94,7 @@ Top loss-making states consistently generate negative profit.
 
 ---
 
-## 🧠 8. Behavioral Insight (My Personal +)
+## 🧠 9. Behavioral Insight (My Personal +)
 
 Customers demonstrate strong price sensitivity:
 
@@ -107,7 +107,7 @@ From a behavioral perspective:
 
 ---
 
-## 🧠 9. Linguistic & Marketing Interpretation
+## 🧠 10. Linguistic & Marketing Interpretation
 
 From a **linguistic perspective**:
 
@@ -125,7 +125,7 @@ From a **marketing perspective**:
 
 ---
 
-## 🏢 10. CRM & Customer Experience Insight
+## 🏢 11. CRM & Customer Experience Insight
 
 Performance differences may reflect:
 
@@ -142,7 +142,7 @@ Performance differences may reflect:
 
 ---
 
-## 🎯 11. Core Business Diagnosis
+## 🎯 12. Core Business Diagnosis
 
 👉 The company operates in a:
 
@@ -157,7 +157,7 @@ Performance differences may reflect:
 
 ---
 
-## 💡 12. Strategic Direction
+## 💡 13. Strategic Direction
 
 To improve performance:
 
@@ -179,7 +179,7 @@ To improve performance:
 
 ---
 
-## 🚀 13. Next Steps (Advanced / GRC Alignment)
+## 🚀 14. Next Steps (Advanced / GRC Alignment)
 
 - Customer Lifetime Value (CLV) modeling  
 - Pricing optimization models  
