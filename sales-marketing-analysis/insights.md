@@ -175,18 +175,6 @@ To improve performance:
 
 ### Market Strategy
 - Improve underperforming regions  
-- Scale high-performing areas  
+- Scale high-performing areas
 
 ---
-
-## 🚀 14. Next Steps (Advanced / GRC Alignment)
-
-- Customer Lifetime Value (CLV) modeling  
-- Pricing optimization models  
-- Advanced segmentation  
-- Data quality and governance improvements  
-
-👉 These steps align with future roles in:
-- Data Operations  
-- Risk & Compliance (GRC)  
-- Business Analytics  
