@@ -252,6 +252,7 @@ High-intent users who do not convert represent the biggest opportunity:
 
 ## 📁 Project Structure
 ecommerce-sql-analysis/
+
 ├── ecommerce_sample.csv
 ├── queries.sql
 ├── README.md
