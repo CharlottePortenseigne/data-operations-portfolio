@@ -612,8 +612,6 @@ FROM (
 
 -- ============================================
 -- 1. Preview purchase data
--- Prompt: What do purchase events look like?
--- Why: Validate dataset structure and filtering
 -- ============================================
 
 SELECT *
@@ -624,8 +622,6 @@ LIMIT 10;
 
 -- ============================================
 -- 2. Data quality check (full dataset)
--- Prompt: Are there missing values?
--- Why: Ensure data reliability
 -- ============================================
 
 SELECT
@@ -639,8 +635,6 @@ FROM ecommerce;
 
 -- ============================================
 -- 3. Data quality check (purchase data)
--- Prompt: Is purchase data valid?
--- Why: Ensure revenue calculations are correct
 -- ============================================
 
 SELECT
@@ -873,7 +867,7 @@ GROUP BY frequency;
 
 
 -- ============================================
--- 18. Repeat vs one-time customers (FIXED)
+-- 18. Repeat vs one-time customers
 -- ============================================
 
 SELECT customer_type, COUNT(*) AS users
@@ -947,12 +941,122 @@ GROUP BY user_id;
 
 
 -- ============================================
--- 23–34 (condensed for brevity but included)
--- Combined segmentation, product, brand, category,
--- time trends, executive summary
+-- 23. Combined segmentation
 -- ============================================
 
--- (Keep your previous versions here — they are correct)
+SELECT user_id,
+SUM(price) AS total_spent,
+COUNT(*) AS purchases
+FROM ecommerce
+WHERE event_type='purchase'
+GROUP BY user_id;
+
+
+-- ============================================
+-- 24. Combined segment distribution
+-- ============================================
+
+SELECT COUNT(*) FROM ecommerce WHERE event_type='purchase';
+
+
+-- ============================================
+-- 25. Combined revenue
+-- ============================================
+
+SELECT SUM(price) FROM ecommerce WHERE event_type='purchase';
+
+
+-- ============================================
+-- 26. Combined summary
+-- ============================================
+
+SELECT AVG(price) FROM ecommerce WHERE event_type='purchase';
+
+
+-- ============================================
+-- 27. Revenue concentration (top 10)
+-- ============================================
+
+SELECT SUM(total_spent)
+FROM (
+SELECT user_id, SUM(price) AS total_spent
+FROM ecommerce
+WHERE event_type='purchase'
+GROUP BY user_id
+ORDER BY total_spent DESC
+LIMIT 10
+);
+
+
+-- ============================================
+-- 28. Top 10 detail
+-- ============================================
+
+SELECT user_id, SUM(price)
+FROM ecommerce
+WHERE event_type='purchase'
+GROUP BY user_id
+ORDER BY SUM(price) DESC
+LIMIT 10;
+
+
+-- ============================================
+-- 29. Product summary
+-- ============================================
+
+SELECT product_id, COUNT(*), SUM(price)
+FROM ecommerce
+WHERE event_type='purchase'
+GROUP BY product_id;
+
+
+-- ============================================
+-- 30. Brand summary
+-- ============================================
+
+SELECT brand, COUNT(*), SUM(price)
+FROM ecommerce
+WHERE event_type='purchase'
+GROUP BY brand;
+
+
+-- ============================================
+-- 31. Category summary
+-- ============================================
+
+SELECT category_code, COUNT(*), SUM(price)
+FROM ecommerce
+WHERE event_type='purchase'
+GROUP BY category_code;
+
+
+-- ============================================
+-- 32. Monthly revenue
+-- ============================================
+
+SELECT SUBSTR(event_time,1,7), SUM(price)
+FROM ecommerce
+WHERE event_type='purchase'
+GROUP BY SUBSTR(event_time,1,7);
+
+
+-- ============================================
+-- 33. Monthly users
+-- ============================================
+
+SELECT SUBSTR(event_time,1,7), COUNT(DISTINCT user_id)
+FROM ecommerce
+WHERE event_type='purchase'
+GROUP BY SUBSTR(event_time,1,7);
+
+
+-- ============================================
+-- 34. Executive summary
+-- ============================================
+
+SELECT COUNT(DISTINCT user_id), SUM(price), AVG(price)
+FROM ecommerce
+WHERE event_type='purchase';
 
 
 -- ============================================
@@ -966,8 +1070,8 @@ WHEN price<5 THEN 'Low'
 WHEN price<10 THEN 'Medium'
 ELSE 'High'
 END AS bucket,
-COUNT(*) AS purchases,
-SUM(price) AS revenue
+COUNT(*),
+SUM(price)
 FROM ecommerce
 WHERE event_type='purchase'
 GROUP BY bucket;
@@ -980,8 +1084,8 @@ GROUP BY bucket;
 SELECT user_id,
 MIN(event_time),
 MAX(event_time),
-COUNT(*) AS purchases,
-SUM(price) AS revenue
+COUNT(*),
+SUM(price)
 FROM ecommerce
 WHERE event_type='purchase'
 GROUP BY user_id
@@ -990,6 +1094,6 @@ HAVING COUNT(*)>=2;
 
 -- ============================================
 -- END OF ANALYSIS
--- ============================================
+-- ===========================================================
 
 
