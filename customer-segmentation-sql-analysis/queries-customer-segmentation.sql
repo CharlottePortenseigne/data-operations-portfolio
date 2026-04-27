@@ -374,7 +374,8 @@ GROUP BY user_id;
 
 -- ============================================
 -- 23. Combined segmentation
--- Prompt: 
+-- Prompt: How do customer value and purchase frequency combine at the user level?
+-- Why: Build a customer profile that combines total spending and number of purchases
 -- ============================================
 
 SELECT user_id,
@@ -386,24 +387,32 @@ GROUP BY user_id;
 
 -- ============================================
 -- 24. Combined segment distribution
+-- Prompt: How many customers belong to each value-frequency profile?
+-- Why: Understand the distribution of strategic customer profiles
 -- ============================================
 
 SELECT COUNT(*) FROM ecommerce WHERE event_type='purchase';
 
 -- ============================================
 -- 25. Combined revenue
+-- Prompt: How much revenue does each value-frequency profile generate?
+-- Why: Identify which combined customer profiles contribute the most revenue
 -- ============================================
 
 SELECT SUM(price) FROM ecommerce WHERE event_type='purchase';
 
 -- ============================================
 -- 26. Combined summary
+-- Prompt: What is the final breakdown of combined customer profiles?
+-- Why: Support the project’s strategic segmentation analysis with users, revenue, and percentage contribution
 -- ============================================
 
 SELECT AVG(price) FROM ecommerce WHERE event_type='purchase';
 
 -- ============================================
 -- 27. Revenue concentration (top 10)
+-- Prompt: How much revenue comes from the top 10 customers?
+-- Why: Evaluate whether revenue depends on a small group of high-value users
 -- ============================================
 
 SELECT SUM(total_spent)
@@ -418,6 +427,8 @@ LIMIT 10
 
 -- ============================================
 -- 28. Top 10 detail
+-- Prompt: Who are the top 10 customers by revenue?
+-- Why: Identify top customer profiles and compare purchase frequency, total spend, and average purchase value
 -- ============================================
 
 SELECT user_id, SUM(price)
@@ -429,6 +440,8 @@ LIMIT 10;
 
 -- ============================================
 -- 29. Product summary
+-- Prompt: Which products generate the most purchases and revenue?
+-- Why: Analyze product-level performance when product_id is more reliable than category_code
 -- ============================================
 
 SELECT product_id, COUNT(*), SUM(price)
@@ -438,6 +451,8 @@ GROUP BY product_id;
 
 -- ============================================
 -- 30. Brand summary
+-- Prompt: Which brands generate the most purchases and revenue?
+-- Why: Explore brand-level performance while accounting for missing brand values
 -- ============================================
 
 SELECT brand, COUNT(*), SUM(price)
@@ -447,6 +462,8 @@ GROUP BY brand;
 
 -- ============================================
 -- 31. Category summary
+-- Prompt: Which categories generate the most purchases and revenue?
+-- Why: Explore category-level performance while accounting for missing category_code values
 -- ============================================
 
 SELECT category_code, COUNT(*), SUM(price)
@@ -456,6 +473,8 @@ GROUP BY category_code;
 
 -- ============================================
 -- 32. Monthly revenue
+-- Prompt: How does revenue change over time?
+-- Why: Identify monthly revenue patterns and seasonality
 -- ============================================
 
 SELECT SUBSTR(event_time,1,7), SUM(price)
@@ -465,6 +484,8 @@ GROUP BY SUBSTR(event_time,1,7);
 
 -- ============================================
 -- 33. Monthly users
+-- Prompt: How many purchasing users are active each month?
+-- Why: Compare customer activity, purchase volume, and revenue over time
 -- ============================================
 
 SELECT SUBSTR(event_time,1,7), COUNT(DISTINCT user_id)
@@ -474,6 +495,8 @@ GROUP BY SUBSTR(event_time,1,7);
 
 -- ============================================
 -- 34. Executive summary
+-- Prompt: What are the main project KPIs in one table?
+-- Why: Provide a concise summary for the README and portfolio presentation
 -- ============================================
 
 SELECT COUNT(DISTINCT user_id), SUM(price), AVG(price)
@@ -482,6 +505,8 @@ WHERE event_type='purchase';
 
 -- ============================================
 -- 35. Price distribution
+-- Prompt: How are purchases distributed across price ranges?
+-- Why: Explain the difference between average and median purchase value and identify low-ticket vs higher-ticket revenue behavior
 -- ============================================
 
 SELECT
@@ -499,6 +524,8 @@ GROUP BY bucket;
 
 -- ============================================
 -- 36. Purchase span (engagement)
+-- Prompt: How long do repeat customers remain active?
+-- Why: Measure engagement through first and last purchase dates and support customer lifecycle analysis
 -- ============================================
 
 SELECT user_id,
@@ -515,138 +542,3 @@ HAVING COUNT(*)>=2;
 -- END OF ANALYSIS
 -- ===========================================================
 
-How do customer value and purchase frequency combine at the user level?
-
--- Why: Build a customer profile that combines total spending and number of purchases
-
--- ============================================
-
--- ============================================
-
--- 24. Combined segment distribution
-
--- Prompt: How many customers belong to each value-frequency profile?
-
--- Why: Understand the distribution of strategic customer profiles
-
--- ============================================
-
--- ============================================
-
--- 25. Combined revenue
-
--- Prompt: How much revenue does each value-frequency profile generate?
-
--- Why: Identify which combined customer profiles contribute the most revenue
-
--- ============================================
-
--- ============================================
-
--- 26. Combined summary
-
--- Prompt: What is the final breakdown of combined customer profiles?
-
--- Why: Support the project’s strategic segmentation analysis with users, revenue, and percentage contribution
-
--- ============================================
-
--- ============================================
-
--- 27. Revenue concentration: Top 10 customers
-
--- Prompt: How much revenue comes from the top 10 customers?
-
--- Why: Evaluate whether revenue depends on a small group of high-value users
-
--- ============================================
-
--- ============================================
-
--- 28. Top 10 customers detail
-
--- Prompt: Who are the top 10 customers by revenue?
-
--- Why: Identify top customer profiles and compare purchase frequency, total spend, and average purchase value
-
--- ============================================
-
--- ============================================
-
--- 29. Product-level purchase summary
-
--- Prompt: Which products generate the most purchases and revenue?
-
--- Why: Analyze product-level performance when product_id is more reliable than category_code
-
--- ============================================
-
--- ============================================
-
--- 30. Brand-level purchase summary
-
--- Prompt: Which brands generate the most purchases and revenue?
-
--- Why: Explore brand-level performance while accounting for missing brand values
-
--- ============================================
-
--- ============================================
-
--- 31. Category-level purchase summary
-
--- Prompt: Which categories generate the most purchases and revenue?
-
--- Why: Explore category-level performance while accounting for missing category_code values
-
--- ============================================
-
--- ============================================
-
--- 32. Monthly revenue trend
-
--- Prompt: How does revenue change over time?
-
--- Why: Identify monthly revenue patterns and seasonality
-
--- ============================================
-
--- ============================================
-
--- 33. Monthly purchasing users
-
--- Prompt: How many purchasing users are active each month?
-
--- Why: Compare customer activity, purchase volume, and revenue over time
-
--- ============================================
-
--- ============================================
-
--- 34. Final executive summary table
-
--- Prompt: What are the main project KPIs in one table?
-
--- Why: Provide a concise summary for the README and portfolio presentation
-
--- ============================================
-
--- ============================================
-
--- 35. Purchase value distribution
-
--- Prompt: How are purchases distributed across price ranges?
-
--- Why: Explain the difference between average and median purchase value and identify low-ticket vs higher-ticket revenue behavior
-
--- ============================================
-
--- ============================================
-
--- 36. Customer purchase span
-
--- Prompt: How long do repeat customers remain active?
-
--- Why: Measure engagement through first and last purchase dates and support customer lifecycle analysis
-
--- ============================================
