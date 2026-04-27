@@ -208,6 +208,8 @@ FROM (
 
 -- ============================================
 -- 14. Average spend per segment
+-- Prompt: What is the average customer value whithin each segment ?
+-- Why: Compare spending intensity across Low, Medium, and High Value customers
 -- ============================================
 
 SELECT segment,
@@ -229,6 +231,8 @@ GROUP BY segment;
 
 -- ============================================
 -- 15. Final segmentation summary
+-- Prompt: What is the full customer segmentation breakdown?
+-- Why: Support the README and insight.md with users, % users, revenue and % revenue by segment
 -- ============================================
 
 WITH base AS (
@@ -252,6 +256,8 @@ GROUP BY segment;
 
 -- ============================================
 -- 16. Frequency segmentation
+-- Prompt: How often do customerspurchase?
+-- Why: Group customers by purchase frequency to identify one-time, occasional, and frequent buyers
 -- ============================================
 
 SELECT
@@ -267,6 +273,8 @@ GROUP BY user_id;
 
 -- ============================================
 -- 17. Revenue by frequency
+-- Prompt: Which purchase frequency group generates the most revenue?
+-- Why: Understand whether revenue is driven by frequentbuyers or occasional customers
 -- ============================================
 
 SELECT frequency, SUM(total_spent) AS revenue
@@ -287,6 +295,8 @@ GROUP BY frequency;
 
 -- ============================================
 -- 18. Repeat vs one-time customers
+-- Prompt: How many customers purchased once vs multiple times?
+-- Why: Measure repeat behavior and retention potential
 -- ============================================
 
 SELECT customer_type, COUNT(*) AS users
@@ -301,6 +311,8 @@ GROUP BY customer_type;
 
 -- ============================================
 -- 19. Revenue by repeat vs one-time
+-- Prompt: How much revenue comesfrom repeat customers vs one-time customers?
+-- Why: Identify whether retention drives revenuemore than single purchases
 -- ============================================
 
 SELECT customer_type, SUM(total_spent) AS revenue
@@ -316,6 +328,8 @@ GROUP BY customer_type;
 
 -- ============================================
 -- 20. Final repeat summary
+-- Prompt: What is the complete repeat vs one-time customer breakdown ?
+-- Why: Support README and insights.mdwith user count and revenue by customer type
 -- ============================================
 
 WITH base AS (
@@ -335,6 +349,8 @@ GROUP BY type;
 
 -- ============================================
 -- 21. Recency
+-- Prompt: When was each customer's most recent purchase?
+-- Why: Identify recently active customers and support retention analysis
 -- ============================================
 
 SELECT user_id, MAX(event_time) AS last_purchase
@@ -344,6 +360,8 @@ GROUP BY user_id;
 
 -- ============================================
 -- 22. Purchase span
+-- Pompt: What is the first and last purchase date for each customer?
+-- Why: Measure customer engagement over time and identify repeat behavior patterns
 -- ============================================
 
 SELECT user_id,
@@ -356,6 +374,7 @@ GROUP BY user_id;
 
 -- ============================================
 -- 23. Combined segmentation
+-- Prompt: 
 -- ============================================
 
 SELECT user_id,
