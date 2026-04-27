@@ -1,15 +1,16 @@
 -- ============================================
--- Customer Segmentation & Revenue Analysis
+-- CUSTOMER SEGMENTATION & REVENUE ANALYSIS
 -- ============================================
 
--- Table: ecommerce
+-- Dataset: ecommerce
 -- Columns:
--- event_time, event_type, product_id, category_code,
--- brand, price, user_id, user_session
+-- event_time, event_type, product_id, category_id,
+-- category_code, brand, price, user_id, user_session
 
 
 -- ============================================
 -- 1. Preview purchase data
+-- Prompt
 -- ============================================
 
 SELECT *
