@@ -211,13 +211,13 @@ This project reflects my experience in:
 
 customer-segmentation-sql-analysis/
 
-  |--- queries-customer-segmentations.sql
+    |--- queries-customer-segmentations.sql
   
-  |--- insights.md
+    |--- insights.md
   
-  |--- README.md
+    |--- README.md
   
-  |--- ecommerce_sample.csv
+    |--- ecommerce_sample.csv
 
 ---
 
