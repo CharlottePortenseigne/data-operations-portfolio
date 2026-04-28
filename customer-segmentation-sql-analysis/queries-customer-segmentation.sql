@@ -270,15 +270,23 @@ GROUP BY segment;
 -- ============================================
 
 SELECT
-CASE
-WHEN COUNT(*)>=5 THEN 'Frequent'
-WHEN COUNT(*)>=2 THEN 'Occasional'
-ELSE 'One-time'
-END AS frequency,
-COUNT(*) AS users
-FROM ecommerce
-WHERE event_type='purchase'
-GROUP BY user_id;
+	frequency_segment,
+    COUNT(*) AS users
+FROM (
+  SELECT
+  	user_id,
+  	COUNT(*) AS total_purchases,
+  	CASE
+  		WHEN COUNT(*) >= 5 THEN 'Frequent'
+  		WHEN COUNT(*) >=2 THEN 'Occasional'
+  		ELSE 'One-time'
+  	END AS frequency_segment
+  FROM ecommerce
+  WHERE event_type = 'purchase'
+  GROUP BY user_id
+)
+GROUP BY frequency_segment
+ORDER BY users DESC;
 
 -- ============================================
 -- 17. Revenue by frequency
