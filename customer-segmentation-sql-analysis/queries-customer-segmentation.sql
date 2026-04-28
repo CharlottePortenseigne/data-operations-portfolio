@@ -204,7 +204,17 @@ SELECT
 FROM (
     SELECT 
         user_id,
-        SUM
+        SUM(CAST(price AS REAL)) AS total_spent,
+    CASE
+        WHEN SUM(CAST(price AS REAL)) > 300 THEN 'High Value'
+        WHEN SUM(CAST(price AS REAL)) > 100 THEN 'Medium Value'
+        ELSE 'Low Value'
+    END AS segment
+    FROM ecommerce
+    WHERE event_type='purchase'
+    GROUP BY user_id)
+GROUP BY segment;
+    
 
 -- ============================================
 -- 14. Average spend per segment
