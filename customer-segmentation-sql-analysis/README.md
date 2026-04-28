@@ -209,13 +209,11 @@ This project reflects my experience in:
 
 # 📂 Project Structure
 
-'''
 customer-segmentation-sql-analysis/
   |--- queries-customer-segmentations.sql
   |--- insights.md
   |--- README.md
   |--- ecommerce_sample.csv
-'''
 
 ---
 
