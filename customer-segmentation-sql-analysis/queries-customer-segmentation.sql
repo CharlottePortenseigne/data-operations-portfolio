@@ -199,7 +199,7 @@ GROUP BY customer_segment;
 -- ============================================
 
 SELECT 
-    customer_segment,
+    segment,
     ROUND(SUM(total_spent), 2) AS revenue
 FROM (
     SELECT 
@@ -213,8 +213,7 @@ FROM (
     FROM ecommerce
     WHERE event_type='purchase'
     GROUP BY user_id)
-GROUP BY segment;
-    
+GROUP BY segment;   
 
 -- ============================================
 -- 14. Average spend per segment
