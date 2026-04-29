@@ -278,7 +278,7 @@ segmented_users AS (
 			WHEN total_spent > 300 THEN 'High Value'
 			WHEN total_spent > 100 THEN 'Medium Value'
 			ELSE 'Low Value'
-		END AS customer_segment,
+		END AS customer_segment
 	FROM user_spending
 )
 SELECT
