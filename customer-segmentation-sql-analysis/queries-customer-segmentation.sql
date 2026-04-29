@@ -580,7 +580,7 @@ WITH user_revenue AS (
 		SUM(CAST(price AS REAL)) AS total_spent
 	FROM ecommerce
 	WHERE event_type = 'purchase'
-	GROUP user_id
+	GROUP BY user_id
 ),
 top_10 AS (
 	SELECT
@@ -610,8 +610,8 @@ FROM top_10;
 SELECT 
 	user_id, 
 	COUNT(*) AS total_purchases,
-	ROUND(SUM(CAST(price AS REAL)), 2) AS total_spent
-	ROUND(AVG(CAST(price AS REAL)), 2) AS avg_purchase_value
+	ROUND(SUM(CAST(price AS REAL)), 2) AS total_spent,
+	ROUND(AVG(CAST(price AS REAL)), 2) AS avg_purchase_value,
 	SUM(price)
 FROM ecommerce
 WHERE event_type = 'purchase'
@@ -663,13 +663,13 @@ LIMIT 20;
 -- ============================================
 
 SELECT 
-	CAST
+	CASE
 		WHEN category_code IS NULL OR category_code = '' THEN 'Unknown'
 		ELSE category_code
 	END AS category_clean, 
 	COUNT(*) AS purchases,
-	ROUND(SUM(price(price AS REAL)), 2) AS revenue,
-	ROUND(AVG(CAST(price AS REAL)), 2) ASavg_price
+	ROUND(SUM(CAST(price AS REAL)), 2) AS revenue,
+	ROUND(AVG(CAST(price AS REAL)), 2) AS avg_price
 FROM ecommerce
 WHERE event_type = 'purchase'
 GROUP BY category_clean
@@ -682,13 +682,13 @@ ORDER BY revenue DESC;
 -- ============================================
 
 SELECT 
-	SUBSTR(REPLACE(event_time, ' UTC',''), 1, 7,) AS purchase_month,
+	SUBSTR(REPLACE(event_time, ' UTC', ''), 1, 7) AS purchase_month,
 	COUNT(*) AS purchases,
 	ROUND(SUM(CAST(price AS REAL)), 2) AS revenue
 FROM ecommerce
 WHERE event_type = 'purchase'
 GROUP BY purchase_month
-ORDER purchase_month;
+ORDER BY purchase_month;
 
 -- ============================================
 -- 33. Monthly purchasing users
