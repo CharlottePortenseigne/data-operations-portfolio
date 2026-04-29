@@ -706,9 +706,13 @@ ORDER BY purchase_month;
 -- Why: Provide a concise summary for the README and portfolio presentation.
 -- ============================================
 
-SELECT COUNT(DISTINCT user_id), SUM(price), AVG(price)
+SELECT 
+	COUNT(DISTINCT user_id) AS total_purchasing_users, 
+	COUNT(*) AS total_purchase_events,
+	ROUND(SUM(CAST(price AS REAL)), 2) AS total_revenue, 
+	ROUND(AVG(CAST(price AS REAL)), 2) AS avg_purchase_value
 FROM ecommerce
-WHERE event_type='purchase';
+WHERE event_type = 'purchase';
 
 -- ============================================
 -- 35. Purchase value distribution
@@ -717,17 +721,19 @@ WHERE event_type='purchase';
 -- ============================================
 
 SELECT
-CASE
-WHEN price<2 THEN 'Very Low'
-WHEN price<5 THEN 'Low'
-WHEN price<10 THEN 'Medium'
-ELSE 'High'
-END AS bucket,
-COUNT(*),
-SUM(price)
+	CASE
+		WHEN CAST(price AS REAL) < 2 THEN 'Very Low (< $2)'
+		WHEN CAST(price AS REAL) < 5 THEN 'Low ($2-$5)'
+		WHEN CAST(price AS REAL) <10 THEN 'Medium ($5-$10)'
+		ELSE 'High (> $10)'
+	END AS price_bucket,
+	COUNT(*) AS purchases,
+	ROUND(SUM(CAST(price AS REAL)), 2) AS revenue,
+	ROUND(AVG(CAST(price AS REAL)), 2) AS avg_price
 FROM ecommerce
-WHERE event_type='purchase'
-GROUP BY bucket;
+WHERE event_type = 'purchase'
+GROUP BY price_bucket
+ORDER BY revenue DESC;
 
 -- ============================================
 -- 36. Customer purchase span
@@ -735,15 +741,17 @@ GROUP BY bucket;
 -- Why: Measure engagement through first and last purchase dates and support customer lifecycle analysis.
 -- ============================================
 
-SELECT user_id,
-MIN(event_time),
-MAX(event_time),
-COUNT(*),
-SUM(price)
+SELECT 
+	user_id,
+	MIN(event_time) AS first_purchase_date,
+	MAX(event_time) AS last_purchase_date,
+	COUNT(*) AS total_purchases,
+	ROUND(SUM(CAST(price AS REAL)), 2) AS total_spent
 FROM ecommerce
-WHERE event_type='purchase'
+WHERE event_type = 'purchase'
 GROUP BY user_id
-HAVING COUNT(*)>=2;
+HAVING COUNT(*) >= 2
+ORDER BY total_purchases DESC, total_spent DESC;
 
 -- ============================================
 -- END OF ANALYSIS
