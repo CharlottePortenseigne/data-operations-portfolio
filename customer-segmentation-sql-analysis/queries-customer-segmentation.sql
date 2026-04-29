@@ -465,16 +465,16 @@ ORDER BY total_purchases DESC, total_spent DESC;
 -- ============================================
 
 SELECT 
-		user_id,
-		ROUD(SUM(price AS REAL)), 2) AS total_spent,
-		COUNT(*) AS total_purchases,
-		CASE
-			WHEN SUM(CAST(price AS REAL)) > 300 AND COUNT(*) >= 2 THEN 'High Value Loyal'
-			WHEN SUM(CAST(price AS REAL)) > 300 AND COUNT(*) = 1 THEN 'High Value One-Time'
-			WHEN SUM(CAST(price AS REAL)) > 100 AND COUNT(*) >= 2 THEN 'Medium Value Repeat'
-			WHEN SUM(CAST(price AS REAL)) > 100 AND COUNT(*) = 1 THEN 'Medium Value One-Time'
-			ELSE 'Low Value'
-		END AS customer_profile
+	user_id,
+	ROUND(SUM(CAST(price AS REAL)), 2) AS total_spent,
+	COUNT(*) AS total_purchases,
+	CASE
+		WHEN SUM(CAST(price AS REAL)) > 300 AND COUNT(*) >= 2 THEN 'High Value Loyal'
+		WHEN SUM(CAST(price AS REAL)) > 300 AND COUNT(*) = 1 THEN 'High Value One-Time'
+		WHEN SUM(CAST(price AS REAL)) > 100 AND COUNT(*) >= 2 THEN 'Medium Value Repeat'
+		WHEN SUM(CAST(price AS REAL)) > 100 AND COUNT(*) = 1 THEN 'Medium Value One-Time'
+		ELSE 'Low Value'
+	END AS customer_profile
 FROM ecommerce
 WHERE event_type = 'purchase'
 GROUP BY user_id
@@ -577,12 +577,12 @@ ORDER BY revenue DESC;
 WITH user_revenue AS (
 	SELECT
 		user_id,
-		SUM(CAST(price AS REAL)) AS total_spent,
+		SUM(CAST(price AS REAL)) AS total_spent
 	FROM ecommerce
 	WHERE event_type = 'purchase'
 	GROUP user_id
 ),
-top 10 AS (
+top_10 AS (
 	SELECT
 		user_id,
 		total_spent
@@ -592,7 +592,13 @@ top 10 AS (
 )
 SELECT
 	ROUND(SUM(total_spent), 2) AS top_10_revenue,
-	ROUND(SUM(total_spent) * 100.0 / (SELECT SUM(total_spent) FROM user_revenue), 2) AS top_10_revenue_share_pct
+	ROUND(
+		SUM(total_spent) * 100.0 / (
+			SELECT SUM(total_spent) 
+			FROM user_revenue
+		), 
+		2
+	) AS top_10_revenue_share_pct
 FROM top_10;
 
 -- ============================================
