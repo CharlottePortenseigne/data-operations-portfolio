@@ -335,7 +335,7 @@ FROM (
 			WHEN COUNT(*)>=5 THEN 'Frequent'
 			WHEN COUNT(*)>=2 THEN 'Occasional'
 			ELSE 'One-time'
-		END AS frequency
+		END AS frequency_segment
 	FROM ecommerce
 	WHERE event_type='purchase'
 	GROUP BY user_id
