@@ -178,7 +178,8 @@ SELECT
     END AS customer_segment
 FROM ecommerce
 WHERE event_type = 'purchase'
-GROUP BY user_id;
+GROUP BY user_id
+ORDER BY total_spent DESC;
 
 -- ============================================
 -- 12. Segment distribution
@@ -201,7 +202,8 @@ FROM (
     WHERE event_type = 'purchase'
     GROUP BY user_id
 )
-GROUP BY customer_segment;
+GROUP BY customer_segment
+ORDER BY users DESC;
 
 -- ============================================
 -- 13. Revenue by segment
@@ -210,21 +212,23 @@ GROUP BY customer_segment;
 -- ============================================
 
 SELECT 
-    segment,
-    ROUND(SUM(total_spent), 2) AS revenue
+    customer_segment,
+    ROUND(SUM(total_spent), 2) AS segment_revenue
 FROM (
     SELECT 
         user_id,
         SUM(CAST(price AS REAL)) AS total_spent,
-    CASE
-        WHEN SUM(CAST(price AS REAL)) > 300 THEN 'High Value'
-        WHEN SUM(CAST(price AS REAL)) > 100 THEN 'Medium Value'
-        ELSE 'Low Value'
-    END AS segment
+    	CASE
+        	WHEN SUM(CAST(price AS REAL)) > 300 THEN 'High Value'
+        	WHEN SUM(CAST(price AS REAL)) > 100 THEN 'Medium Value'
+        	ELSE 'Low Value'
+   		END AS customer_segment
     FROM ecommerce
-    WHERE event_type='purchase'
-    GROUP BY user_id)
-GROUP BY segment;   
+    WHERE event_type = 'purchase'
+    GROUP BY user_id
+)
+GROUP BY customer_segment
+ORDER BY segment_revenue DESC;   
 
 -- ============================================
 -- 14. Average spending per segment
@@ -233,22 +237,24 @@ GROUP BY segment;
 -- ============================================
 
 SELECT 
-	scustomer_segment,
+	customer_segment,
 	COUNT(*) AS users,
-ROUND(AVG(total_spent),2) AS avg_spent
+	ROUND(AVG(total_spent), 2) AS avg_spent_per_user
 FROM (
-SELECT user_id,
-SUM(CAST(price AS REAL)) AS total_spent,
-CASE
-WHEN SUM(CAST(price AS REAL)) > 300 THEN 'High Value'
-WHEN SUM(CAST(price AS REAL)) > 100 THEN 'Medium Value'
-ELSE 'Low Value'
-END AS segment
-FROM ecommerce
-WHERE event_type='purchase'
-GROUP BY user_id
+	SELECT 
+		user_id,
+		SUM(CAST(price AS REAL)) AS total_spent,
+		CASE
+			WHEN SUM(CAST(price AS REAL)) > 300 THEN 'High Value'
+			WHEN SUM(CAST(price AS REAL)) > 100 THEN 'Medium Value'
+			ELSE 'Low Value'
+		END AS customer_segment
+	FROM ecommerce
+	WHERE event_type = 'purchase'
+	GROUP BY user_id
 )
-GROUP BY segment;
+GROUP BY customer_segment
+ORDER BY avg_spent_per_user DESC;
 
 -- ============================================
 -- 15. Final customer segmentation summary
@@ -256,24 +262,34 @@ GROUP BY segment;
 -- Why: Support the README and insight.md with users, % users, revenue and % revenue by segment.
 -- ============================================
 
-WITH base AS (
-SELECT user_id, SUM(CAST(price AS REAL)) AS total_spent
-FROM ecommerce
-WHERE event_type='purchase'
-GROUP BY user_id
+WITH user_spending AS (
+	SELECT 
+		user_id, 
+		SUM(CAST(price AS REAL)) AS total_spent
+	FROM ecommerce
+	WHERE event_type = 'purchase'
+	GROUP BY user_id
+),
+segmented_users AS (
+	SELECT
+		user_id,
+		total_spent,
+		CASE
+			WHEN total_spent > 300 THEN 'High Value'
+			WHEN total_spent > 100 THEN 'Medium Value'
+			ELSE 'Low Value'
+		END AS customer_segment,
+	FROM user_spending
 )
 SELECT
-CASE
-WHEN total_spent > 300 THEN 'High Value'
-WHEN total_spent > 100 THEN 'Medium Value'
-ELSE 'Low Value'
-END AS segment,
-COUNT(*) AS users,
-ROUND(COUNT(*)*100.0/(SELECT COUNT(*) FROM base),2) AS pct_users,
-ROUND(SUM(total_spent),2) AS revenue,
-ROUND(SUM(total_spent)*100.0/(SELECT SUM(total_spent) FROM base),2) AS pct_revenue
-FROM base
-GROUP BY segment;
+	customer_segment,
+	COUNT(*) AS users,
+	ROUND(COUNT(*) * 100.0 / (SELECT COUNT(*) FROM segmented_users), 2) AS pct_users,
+	ROUND(SUM(total_spent), 2) AS revenue,
+	ROUND(SUM(total_spent) * 100.0 / (SELECT SUM(total_spent) FROM segmented_users), 2) AS pct_revenue
+FROM segmented_users
+GROUP BY customer_segment
+ORDER BY revenue DESC;
 
 -- ============================================
 -- 16. Purchase frequency segmentation
@@ -306,21 +322,26 @@ ORDER BY users DESC;
 -- Why: Understand whether revenue is driven by frequent buyers or occasional customers.
 -- ============================================
 
-SELECT frequency, SUM(total_spent) AS revenue
+SELECT 
+	frequency_segment, 
+	COUNT(*) AS users,
+	ROUND(SUM(total_spent), 2) AS revenue
 FROM (
-SELECT user_id,
-COUNT(*) AS purchases,
-SUM(CAST(price AS REAL)) AS total_spent,
-CASE
-WHEN COUNT(*)>=5 THEN 'Frequent'
-WHEN COUNT(*)>=2 THEN 'Occasional'
-ELSE 'One-time'
-END AS frequency
-FROM ecommerce
-WHERE event_type='purchase'
-GROUP BY user_id
+	SELECT 
+		user_id,
+		COUNT(*) AS total_purchases,
+		SUM(CAST(price AS REAL)) AS total_spent,
+		CASE
+			WHEN COUNT(*)>=5 THEN 'Frequent'
+			WHEN COUNT(*)>=2 THEN 'Occasional'
+			ELSE 'One-time'
+		END AS frequency
+	FROM ecommerce
+	WHERE event_type='purchase'
+	GROUP BY user_id
 )
-GROUP BY frequency;
+GROUP BY frequency_segment
+ORDER BY revenue DESC;
 
 -- ============================================
 -- 18. Repeat vs one-time customers
@@ -328,15 +349,23 @@ GROUP BY frequency;
 -- Why: Measure repeat behavior and retention potential.
 -- ============================================
 
-SELECT customer_type, COUNT(*) AS users
+SELECT 
+	customer_type, 
+	COUNT(*) AS users
 FROM (
-SELECT user_id,
-CASE WHEN COUNT(*)=1 THEN 'One-time' ELSE 'Repeat' END AS customer_type
-FROM ecommerce
-WHERE event_type='purchase'
-GROUP BY user_id
+	SELECT 
+		user_id,
+		COUNT(*) AS total_purchases,
+		CASE 
+			WHEN COUNT(*) = 1 THEN 'One-time' 
+			ELSE 'Repeat' 
+		END AS customer_type
+	FROM ecommerce
+	WHERE event_type = 'purchase'
+	GROUP BY user_id
 )
-GROUP BY customer_type;
+GROUP BY customer_type
+ORDER BY users DESC;
 
 -- ============================================
 -- 19. Revenue by repeat vs one-time customers
@@ -344,16 +373,24 @@ GROUP BY customer_type;
 -- Why: Identify whether retention drives revenue more than single purchases.
 -- ============================================
 
-SELECT customer_type, SUM(total_spent) AS revenue
+SELECT 
+		customer_type, 
+		ROUND(SUM(total_spent), 2) AS revenue
 FROM (
-SELECT user_id,
-SUM(CAST(price AS REAL)) AS total_spent,
-CASE WHEN COUNT(*)=1 THEN 'One-time' ELSE 'Repeat' END AS customer_type
-FROM ecommerce
-WHERE event_type='purchase'
-GROUP BY user_id
+	SELECT 
+		user_id,
+		COUNT(*) AS total_purchases,
+		SUM(CAST(price AS REAL)) AS total_spent,
+		CASE 
+			WHEN COUNT(*) = 1 THEN 'One-time' 
+			ELSE 'Repeat' 
+		END AS customer_type
+	FROM ecommerce
+	WHERE event_type = 'purchase'
+	GROUP BY user_id
 )
-GROUP BY customer_type;
+GROUP BY customer_type
+ORDER BY revenue DESC;
 
 -- ============================================
 -- 20. Final repeat vs one-time summary
@@ -361,20 +398,34 @@ GROUP BY customer_type;
 -- Why: Support README and insights.md with user count, % users, revenue, and % revenue by customer type.
 -- ============================================
 
-WITH base AS (
-SELECT user_id,
-COUNT(*) AS purchases,
-SUM(CAST(price AS REAL)) AS total_spent
-FROM ecommerce
-WHERE event_type='purchase'
-GROUP BY user_id
+WITH customer_purchase_summary AS (
+	SELECT 
+		user_id,
+		COUNT(*) AS total_purchases,
+		SUM(CAST(price AS REAL)) AS total_spent
+	FROM ecommerce
+	WHERE event_type = 'purchase'
+	GROUP BY user_id
+),
+customer_type_summary AS (
+	SELECT
+		CASE 
+			WHEN total_purchases = 1 THEN 'One-time' 
+			ELSE 'Repeat' 
+		END AS customer_type,
+		COUNT(*) AS users,
+		SUM(total_spent) AS revenue
+	FROM customer_purchase_summary
+	GROUP BY customer_type
 )
 SELECT
-CASE WHEN purchases=1 THEN 'One-time' ELSE 'Repeat' END AS type,
-COUNT(*) AS users,
-ROUND(SUM(total_spent),2) AS revenue
-FROM base
-GROUP BY type;
+	customer_type,
+	users,
+	ROUND(users * 100.0 / (SELECT SUM(users) FROM customer_type_summary), 2) AS pct_users,
+	ROUND(revenue, 2) AS revenue,
+	ROUND(revenue * 100.0 / (SELECT SUM(revenue) FROM customer_type_summary), 2) AS pct_revenue
+FROM customer_type_summary
+ORDER BY revenue DESC;
 
 -- ============================================
 -- 21. Recency analysis
@@ -382,10 +433,13 @@ GROUP BY type;
 -- Why: Identify recently active customers and support retention analysis.
 -- ============================================
 
-SELECT user_id, MAX(event_time) AS last_purchase
+SELECT 
+		user_id, 
+		MAX(event_time) AS last_purchase_date
 FROM ecommerce
-WHERE event_type='purchase'
-GROUP BY user_id;
+WHERE event_type = 'purchase'
+GROUP BY user_id
+ORDER BY last_purchase_date DESC;
 
 -- ============================================
 -- 22. First vs last purchase date
@@ -393,13 +447,16 @@ GROUP BY user_id;
 -- Why: Measure customer engagement over time and identify repeat behavior patterns.
 -- ============================================
 
-SELECT user_id,
-MIN(event_time),
-MAX(event_time),
-COUNT(*) AS purchases
+SELECT 
+	user_id,
+	MIN(event_time) AS first_purchase_date,
+	MAX(event_time) AS last_purchase_date,
+	COUNT(*) AS total_purchases,
+	ROUND(SUM(CAST(price AS REAL)), 2) AS total_spent
 FROM ecommerce
-WHERE event_type='purchase'
-GROUP BY user_id;
+WHERE event_type = 'purchase'
+GROUP BY user_id
+ORDER BY total_purchases DESC, total_spent DESC;
 
 -- ============================================
 -- 23. Value + frequency combined segmentation
@@ -407,12 +464,21 @@ GROUP BY user_id;
 -- Why: Build a more strategic customer profile that combines total spending and number of purchases.
 -- ============================================
 
-SELECT user_id,
-SUM(price) AS total_spent,
-COUNT(*) AS purchases
+SELECT 
+		user_id,
+		ROUD(SUM(price AS REAL)), 2) AS total_spent,
+		COUNT(*) AS total_purchases,
+		CASE
+			WHEN SUM(CAST(price AS REAL)) > 300 AND COUNT(*) >= 2 THEN 'High Value Loyal'
+			WHEN SUM(CAST(price AS REAL)) > 300 AND COUNT(*) = 1 THEN 'High Value One-Time'
+			WHEN SUM(CAST(price AS REAL)) > 100 AND COUNT(*) >= 2 THEN 'Medium Value Repeat'
+			WHEN SUM(CAST(price AS REAL)) > 100 AND COUNT(*) = 1 THEN 'Medium Value One-Time'
+			ELSE 'Low Value'
+		END AS customer_profile
 FROM ecommerce
-WHERE event_type='purchase'
-GROUP BY user_id;
+WHERE event_type = 'purchase'
+GROUP BY user_id
+ORDER BY total_spent DESC, total_purchases DESC;
 
 -- ============================================
 -- 24. Distribution of combined customer profiles
@@ -420,7 +486,27 @@ GROUP BY user_id;
 -- Why: Understand the distribution of strategic customer profiles.
 -- ============================================
 
-SELECT COUNT(*) FROM ecommerce WHERE event_type='purchase';
+SELECT 
+	customer_profile,
+	COUNT(*) AS users
+FROM (
+	SELECT
+		user_id,
+		SUM(CAST(price AS REAL)) AS total_spent,
+		COUNT(*) AS total_purchases,
+		CASE
+			WHEN SUM(CAST(price AS REAL)) > 300 AND COUNT(*) >= 2 THEN 'High Value Loyal'
+			WHEN SUM(CAST(price AS REAL)) > 300 AND COUNT(*) = 1 THEN 'High Value One-Time'
+			WHEN SUM(CAST(price AS REAL)) > 100 AND COUNT(*) >= 2 THEN 'Medium Value Repeat'
+			WHEN SUM(CAST(price AS REAL)) > 100 AND COUNT(*) = 1 THEN 'Medium Value One-Time'
+			ELSE 'Low Value'
+		END AS customer_profile
+	FROM ecommerce 
+	WHERE event_type = 'purchase'
+	GROUP BY user_id
+)
+GROUP BY customer_profile
+ORDER BY users DESC;
 
 -- ============================================
 -- 25. Revenue by combined customer profiles
@@ -428,7 +514,27 @@ SELECT COUNT(*) FROM ecommerce WHERE event_type='purchase';
 -- Why: Identify which combined customer profiles contribute the most revenue.
 -- ============================================
 
-SELECT SUM(price) FROM ecommerce WHERE event_type='purchase';
+SELECT 
+	customer_profile,
+	ROUND(SUM(total_spent), 2) AS revenue
+FROM (
+	SELECT
+		user_id,
+		SUM(CAST(price AS REAL)) AS total_spent,
+		COUNT(*) AS total_purchases,
+		CASE
+			WHEN SUM(CAST(price AS REAL)) > 300 AND COUNT(*) >= 2 THEN 'High Value Loyal'
+			WHEN SUM(CAST(price AS REAL)) > 300 AND COUNT(*) = 1 THEN 'High Value One-Time'
+			WHEN SUM(CAST(price AS REAL)) > 100 AND COUNT(*) >= 2 THEN 'Medium Value Repeat'
+			WHEN SUM(CAST(price AS REAL)) > 100 AND COUNT(*) = 1 THEN 'Medium Value One-Time'
+			ELSE 'Low Value'
+		END AS customer_profile
+	FROM ecommerce 
+	WHERE event_type = 'purchase'
+	GROUP BY user_id
+)
+GROUP BY customer_profile
+ORDER BY revenue DESC;
 
 -- ============================================
 -- 26. Final combined profile summary
@@ -436,7 +542,31 @@ SELECT SUM(price) FROM ecommerce WHERE event_type='purchase';
 -- Why: Support the strategic segmentation with users, % users, revenue, and % revenue.
 -- ============================================
 
-SELECT AVG(price) FROM ecommerce WHERE event_type='purchase';
+WITH customer_profiles AS (
+	SELECT
+		user_id,
+		SUM(CAST(price AS REAL)) AS total_spent,
+		COUNT(*) AS total_purchases,
+		CASE
+			WHEN SUM(CAST(price AS REAL)) > 300 AND COUNT(*) >= 2 THEN 'High Value Loyal'
+			WHEN SUM(CAST(price AS REAL)) > 300 AND COUNT(*) = 1 THEN 'High Value One-Time'
+			WHEN SUM(CAST(price AS REAL)) > 100 AND COUNT(*) >= 2 THEN 'Medium Value Repeat'
+			WHEN SUM(CAST(price AS REAL)) > 100 AND COUNT(*) = 1 THEN 'Medium Value One-Time'
+			ELSE 'Low Value'
+		END AS customer_profile
+	FROM ecommerce 
+	WHERE event_type = 'purchase'
+	GROUP BY user_id
+)
+SELECT
+	customer_profile,
+	COUNT(*) AS users,
+	ROUND(COUNT(*) * 100.0 / (SELECT COUNT(*) FROM customer_profiles), 2) AS pct_users,
+	ROUND(SUM(total_spent), 2) AS revenue,
+	ROUND(SUM(total_spent) * 100.0 / (SELECT SUM(total_spent) FROM customer_profiles), 2) AS pct_revenue
+FROM customer_profiles
+GROUP BY customer_profile
+ORDER BY revenue DESC;
 
 -- ============================================
 -- 27. Revenue concentration: Top 10 customers
@@ -444,15 +574,26 @@ SELECT AVG(price) FROM ecommerce WHERE event_type='purchase';
 -- Why: Evaluate whether revenue depends on a small group of high-value users.
 -- ============================================
 
-SELECT SUM(total_spent)
-FROM (
-SELECT user_id, SUM(price) AS total_spent
-FROM ecommerce
-WHERE event_type='purchase'
-GROUP BY user_id
-ORDER BY total_spent DESC
-LIMIT 10
-);
+WITH user_revenue AS (
+	SELECT
+		user_id,
+		SUM(CAST(price AS REAL)) AS total_spent,
+	FROM ecommerce
+	WHERE event_type = 'purchase'
+	GROUP user_id
+),
+top 10 AS (
+	SELECT
+		user_id,
+		total_spent
+	FROM user_revenue
+	ORDER BY total_spent DESC
+	LIMIT 10
+)
+SELECT
+	ROUND(SUM(total_spent), 2) AS top_10_revenue,
+	ROUND(SUM(total_spent) * 100.0 / (SELECT SUM(total_spent) FROM user_revenue), 2) AS top_10_revenue_share_pct
+FROM top_10;
 
 -- ============================================
 -- 28. Top 10 customer detail
@@ -460,12 +601,17 @@ LIMIT 10
 -- Why: Identify top customer profiles and compare purchase frequency, total spend, and average purchase value.
 -- ============================================
 
-SELECT user_id, SUM(price)
+SELECT 
+	user_id, 
+	COUNT(*) AS total_purchases,
+	ROUND(SUM(CAST(price AS REAL)), 2) AS total_spent
+	ROUND(AVG(CAST(price AS REAL)), 2) AS avg_purchase_value
+	SUM(price)
 FROM ecommerce
-WHERE event_type='purchase'
+WHERE event_type = 'purchase'
 GROUP BY user_id
-ORDER BY SUM(price) DESC
-LIMIT 10;
+ORDER BY total_spent DESC
+LIMIT 10 ;
 
 -- ============================================
 -- 29. Product-level purchase summary
@@ -473,10 +619,16 @@ LIMIT 10;
 -- Why: Analyze product-level performance when product_id is more reliable than category_code.
 -- ============================================
 
-SELECT product_id, COUNT(*), SUM(price)
+SELECT 
+	product_id, 
+	COUNT(*) AS purchases,
+	ROUND(SUM(CAST(price AS REAL)), 2) AS revenue,
+	ROUND(AVG(CAST(price AS REAL)), 2) AS avg_price
 FROM ecommerce
-WHERE event_type='purchase'
-GROUP BY product_id;
+WHERE event_type = 'purchase'
+GROUP BY product_id
+ORDER BY revenue DESC
+LIMIT 20;
 
 -- ============================================
 -- 30. Brand-level purchase summary
@@ -484,10 +636,19 @@ GROUP BY product_id;
 -- Why: Explore brand-level performance while accounting for missing brand values.
 -- ============================================
 
-SELECT brand, COUNT(*), SUM(price)
+SELECT 
+	CASE
+		WHEN brand IS NULL OR brand = '' THEN 'Unknown'
+		ELSE brand
+	END AS brand_clean,
+	COUNT(*) AS purchases,
+	ROUND(SUM(CAST(price AS REAL)), 2) AS revenue,
+	ROUND(AVG(CAST(price AS REAL)), 2) AS avg_price
 FROM ecommerce
-WHERE event_type='purchase'
-GROUP BY brand;
+WHERE event_type = 'purchase'
+GROUP BY brand_clean
+ORDER BY revenue DESC
+LIMIT 20;
 
 -- ============================================
 -- 31. Category-level purchase summary
@@ -495,10 +656,18 @@ GROUP BY brand;
 -- Why: Explore category-level performance while accounting for missing category_code values.
 -- ============================================
 
-SELECT category_code, COUNT(*), SUM(price)
+SELECT 
+	CAST
+		WHEN category_code IS NULL OR category_code = '' THEN 'Unknown'
+		ELSE category_code
+	END AS category_clean, 
+	COUNT(*) AS purchases,
+	ROUND(SUM(price(price AS REAL)), 2) AS revenue,
+	ROUND(AVG(CAST(price AS REAL)), 2) ASavg_price
 FROM ecommerce
-WHERE event_type='purchase'
-GROUP BY category_code;
+WHERE event_type = 'purchase'
+GROUP BY category_clean
+ORDER BY revenue DESC;
 
 -- ============================================
 -- 32. Monthly revenue trend
@@ -506,10 +675,14 @@ GROUP BY category_code;
 -- Why: Identify monthly revenue patterns and seasonality.
 -- ============================================
 
-SELECT SUBSTR(event_time,1,7), SUM(price)
+SELECT 
+	SUBSTR(REPLACE(event_time, ' UTC',''), 1, 7,) AS purchase_month,
+	COUNT(*) AS purchases,
+	ROUND(SUM(CAST(price AS REAL)), 2) AS revenue
 FROM ecommerce
-WHERE event_type='purchase'
-GROUP BY SUBSTR(event_time,1,7);
+WHERE event_type = 'purchase'
+GROUP BY purchase_month
+ORDER purchase_month;
 
 -- ============================================
 -- 33. Monthly purchasing users
@@ -517,10 +690,15 @@ GROUP BY SUBSTR(event_time,1,7);
 -- Why: Compare customer activity, purchase volume, and revenue over time.
 -- ============================================
 
-SELECT SUBSTR(event_time,1,7), COUNT(DISTINCT user_id)
+SELECT 
+	SUBSTR(REPLACE(event_time, ' UTC', ''), 1, 7) AS purchase_month,
+	COUNT(DISTINCT user_id) AS purchasing_users,
+	COUNT(*) AS purchases,
+	ROUND(SUM(CAST(price AS REAL)), 2) AS revenue
 FROM ecommerce
-WHERE event_type='purchase'
-GROUP BY SUBSTR(event_time,1,7);
+WHERE event_type = 'purchase'
+GROUP BY purchase_month
+ORDER BY purchase_month;
 
 -- ============================================
 -- 34. Final executive summary table
