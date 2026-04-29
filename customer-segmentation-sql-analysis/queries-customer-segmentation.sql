@@ -154,7 +154,8 @@ SELECT
     MAX(event_time) AS last_purchase
 FROM ecommerce
 WHERE event_type = 'purchase'
-GROUP BY user_id;
+GROUP BY user_id
+ORDER BY total_spent DESC;
 
 -- ============================================
 -- 11. Customer segmentation by total spending
@@ -231,8 +232,9 @@ GROUP BY segment;
 -- Why: Compare spending intensity across Low, Medium, and High Value customers.
 -- ============================================
 
-SELECT segment,
-COUNT(*) AS users,
+SELECT 
+	scustomer_segment,
+	COUNT(*) AS users,
 ROUND(AVG(total_spent),2) AS avg_spent
 FROM (
 SELECT user_id,
