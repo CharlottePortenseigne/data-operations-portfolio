@@ -174,14 +174,12 @@ Most users stay low-value.
 ---
 
 ## 🔗 Project Structure
-customer-segmentation-sql/
-│
-├── queries.sql        # All SQL queries (fully commented)
-├── ecommerce_sample.csv
-├── README.md
-├── insights.md
-
----
+customer-segmentation-sql/\
+│ \
+├── queries.sql \
+├── ecommerce_sample.csv \
+├── README.md \
+├── insights.md \
 
 ---
 
