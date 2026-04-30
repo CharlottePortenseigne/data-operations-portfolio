@@ -174,6 +174,42 @@ Most users stay low-value.
 ---
 
 ## 🔗 Project Structure
+customer-segmentation-sql/
+│
+├── queries.sql        # All SQL queries (fully commented)
+├── ecommerce_sample.csv
+├── README.md
+├── insights.md
+
+---
+
+---
+
+## 🧩 Tools Used
+
+- SQL (SQLite)
+- Data analysis & aggregation
+- Business & marketing interpretation
+
+---
+
+## 💬 Personal Insight
+
+With a background in linguistics and data annotation, this project goes beyond numbers.
+
+It highlights how **user behavior patterns**, like:
+- hesitation before purchase
+- inconsistent engagement
+- fragmented sessions
+
+…can be interpreted similarly to **language patterns**:
+→ signals, intent, and decision-making structures.
+
+This bridges **data analysis + user psychology + computational linguistics**.
+
+---
+
+
 
 
 
