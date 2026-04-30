@@ -134,7 +134,7 @@ The dataset shows **strong overall quality and consistency**
 
 ## 📁 Repository Structure
 
-crm-data-quality-tableau/
+crm-data-quality-tableau/ \
 │ \
 ├── images/ \
 │   ├── dashboard-overview.png \
