@@ -163,18 +163,19 @@ Leveraging a background in linguistics and computational approaches to language,
 
 ## 🎯 Professional Focus
 
+Areas of interest:
 - Data Operations  
 - CRM Analytics  
 - Business Intelligence  
 - Operational Reporting  
 
-With a strong interest in structured, data-driven environments such as:
+Experience and interest in structured, data-driven environments, including:
 - Banking & Financial Services  
 - Insurance  
 - E-commerce  
 - Large-scale organizations  
 
-Long-term:
+Long-term development interest:
 - Governance, Risk & Compliance (GRC)
 
 ---
