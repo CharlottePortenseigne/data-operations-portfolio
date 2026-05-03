@@ -309,8 +309,8 @@ And more importantly:
 ## 🔗 Project Access
 
 📊 Dashboard:
-![Dashboard](https://docs.google.com/spreadsheets/d/1_MaBhhgUQ1A9yaQQhEOYpVhVDk9Vc38oNACzSElH70Q/edit?usp=sharing)
+https://docs.google.com/spreadsheets/d/1_MaBhhgUQ1A9yaQQhEOYpVhVDk9Vc38oNACzSElH70Q/edit?usp=sharing
 
 💻 GitHub:  
-![GitHub](https://github.com/CharlottePortenseigne/data-operations-portfolio.git) 
+https://github.com/CharlottePortenseigne/data-operations-portfolio.git 
 
